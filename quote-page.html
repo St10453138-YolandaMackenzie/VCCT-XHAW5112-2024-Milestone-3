@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quote</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
+    <script>
+        // Translations for each language
+        const translations = {
+            en: {
+                title1: "Checkout",
+                title2: "Personal Details",
+                title3: "Explore",
+                title4: "Company",
+                title5: "Get in touch",
+                dataC1: "Selection",
+                dataC2: "Personal Details",
+                dataC3: "Check Data",
+                checkbox5: "Child Minding",
+                checkbox6: "Cooking",
+                checkbox7: "Garden Maintenance",
+                checkbox1: "First-Aid",
+                checkbox2: "Sewing",
+                checkbox3: "Landscaping",
+                checkbox4: "Life Skills",
+                btn1: "Six-weeks",
+                btn2: "Six-months",
+                btn3: " Generate Total",
+                btn4: "Register",
+                C: " Course Goes Here",
+                Cselect: " Course",
+                P: " Price Goes Here",
+                Pselect: " Price",
+                search: " Search",
+                Name: "Name",
+                Surname: "Surname",
+                Email: "Email Adress",
+                Phone: "Phone Number",
+                total: "Subtotal:",
+                discount: "Discount Applied:",
+                finalTotal: "Total:",
+                link1: "Home",
+                link2: "Long-Term Courses",
+                link3: "Short-Term Courses",
+                link4: "Get a Quote",
+                link5: "Contact Us",
+                link6: "Terms and Conditions",
+                link7: "Legal Policy",
+                link9: "Call Us on +278850991017",
+                link10: "Contact us on WhatsApp",
+                link11: "Home",
+                link12: "Long-Term Courses",
+                link13: "Short-Term Courses",
+                link14: "Get a Quote",
+                link15: "Contact Us",
+            },
+            af: {
+                title1: "Kassie",
+                title2: "Persoonlike Besonderhede",
+                title3: "Verken",
+                title4: "Maatskappy",
+                title5: "Kom in kontak",
+                dataC1: "Seleksie",
+                dataC2: "Persoonlike Besonderhede",
+                dataC3: "Kontroleer Data",
+                checkbox5: "Kinderoppas",
+                checkbox6: "Kook",
+                checkbox7: "Tuinonderhoud",
+                checkbox1: "Eerstehulp",
+                checkbox2: "Naaldwerk",
+                checkbox3: "Landskap",
+                checkbox4: "Lewensvaardighede",
+                btn1: "Ses-weeks",
+                btn2: "Ses-maande",
+                btn3: "Genereer Totaal",
+                btn4: " Registreer",
+                C: "Kursus Gaan Hier",
+                Cselect: "Kursus",
+                P: "Prys kom hier",
+                Pselect: "Prys",
+                search: "Soek",
+                Name: "Naam",
+                Surname: "Van",
+                Email: "E-posadres",
+                Phone: "Telefoonnommer",
+                total: "Subtotaal:",
+                discount: "Afslag Toegepas:",
+                finalTotal: "Totaal:",
+                link1: "Tuis",
+                link2: "Langtermyn Kursusse",
+                link3: "Korttermyn Kursusse",
+                link4: "Kry 'n Kwotasie",
+                link5: "Kontak Ons",
+                link6: "Bepalings en Voorwaardes",
+                link7: "Regs Beleid",
+                link9: "Bel Ons by +278850991017",
+                link10: "Kontak ons op WhatsApp",
+                link11: "Tuis",
+                link12: "Langtermyn Kursusse",
+                link13: "Korttermyn Kursusse",
+                link14: "Kry 'n Kwotasie",
+                link15: "Kontak Ons"
+
+            },
+            zu: {
+
+                title1: "Ukuthenga",
+                title2: "Imininingwane Zomuntu",
+                title3: "Hlola",
+                title4: "Inkampani",
+                title5: "Thintana",
+                dataC1: "Ukukhetha",
+                dataC2: "Imininingwane Zomuntu",
+                dataC3: "Hlola Idatha",
+                checkbox5: "Ukugcinwa Kwezingane",
+                checkbox6: "Ukupheka",
+                checkbox7: "Ukwakhiwa KweNgadi",
+                checkbox1: "Ukwelashwa Kwezimo Eziphuthumayo",
+                checkbox2: "Ukuthunga",
+                checkbox3: "Ukwakhiwa Kwezingadi",
+                checkbox4: "Amakhono Okuphila",
+                btn1: " Izinyanga eziyisithupha",
+                btn2: " Amaviki ayisithupha",
+                btn3: "Thola Isamba",
+                btn4: " Bhalisa",
+                C: "Ikhono Liza Lapha",
+                Cselect: "Ikhono",
+                search: "Sesha",
+                P: "Intengo Iya Lapha",
+                Pselect: "Intengo",
+                Name: "Igama",
+                Surname: "Isibongo",
+                Email: "I-imeyili",
+                Phone: "Inombolo Yocingo",
+                total: "I-Subtotal:",
+                discount: "I-Diski Isethwe:",
+                finalTotal: "I-Total:",
+                link1: "Ikhaya",
+                link2: "Izifundo Zesikhathi Eside",
+                link3: "Izifundo Zesikhathi Esifushane",
+                link4: "Thola Isithombe",
+                link5: "Sithinte",
+                link6: "Imigomo Nezimo",
+                link7: "Ubufakazi Inqubomgomo",
+                link9: "Sishayele ku +278850991017",
+                link10: "Sithinte ku-WhatsApp",
+                link11: "Ikhaya",
+                link12: "Izifundo Zesikhathi Eside",
+                link13: "Izifundo Zesikhathi Esifushane",
+                link14: "Thola Isithombe",
+                link15: "Sithinte"
+
+            },
+            xh: {
+                title1: "Ukuphuma",
+                title2: "Iinkcukacha Zobuqu",
+                title3: "Jonga",
+                title4: "Inkampani",
+                title5: "Nxibelelana",
+                dataC1: "Ukhetho",
+                dataC2: "Iinkcukacha Zobuqu",
+                dataC3: "Jonga Idatha",
+                checkbox5: "Ukunakekela Abantwana",
+                checkbox6: "Ukupheka",
+                checkbox7: "Ugcino Lwegadi",
+                checkbox1: "Uncedo Lokuqala",
+                checkbox2: "Ukuthunga",
+                checkbox3: "Ukucwangciswa Kwegadi",
+                checkbox4: "Izakhono Zobomi",
+                btn1: " Iinyanga ezintandathu",
+                btn2: " Iiveki ezintandathu",
+                btn3: "Yenza Iyonke",
+                btn4: "Bhalisa",
+                C: "Ikhosi Iya Apha",
+                Cselect: "Ikhosi",
+                P: "Intengo Iya Nantsi",
+                Pselect: "Intengo",
+                search: "Khangela",
+                Name: "Igama",
+                Surname: "Ifani",
+                Email: "Idilesi ye-imeyile",
+                Phone: "Inombolo Yefowuni",
+                total: "Inani Elingaphantsi:",
+                discount: "Isaphulelo Sisetyenzisiwe:",
+                finalTotal: "Iyonke:",
+                link1: "Ekhaya",
+                link2: "Iikhosi Zexesha Elide",
+                link3: "Iikhosi Zexesha Elifutshane",
+                link4: "Fumana Iquote",
+                link5: "Qhagamshelana Nathi",
+                link6: "Imigaqo nemiqathango",
+                link7: "Ezomthetho Umgaqo-nkqubo",
+                link9: "Sitsalele ku +278850991017",
+                link10: "Qhagamshelana nathi kwiWhatsApp",
+                link11: "Ekhaya",
+                link12: "Iikhosi Zexesha Elide",
+                link13: "Iikhosi Zexesha Elifutshane",
+                link14: "Fumana Iquote",
+                link15: "Qhagamshelana Nathi"
+
+            },
+            st: {
+                title1: "Tefo",
+                title2: "Lintlha Tsa Motho",
+                title3: "Jonga",
+                title4: "Inkampani",
+                title5: "Nxibelelana",
+                dataC1: "Khetho",
+                dataC2: "Lintlha Tsa Motho",
+                dataC3: "Hlahloba Datha",
+                checkbox5: "Ho Hlokomela Bana",
+                checkbox6: "Ho Pheha",
+                checkbox7: "Tlhokomelo ea Serapa",
+                checkbox1: "Thuso ea Pele",
+                checkbox2: "Ho Roka",
+                checkbox3: "Ho Hlophisa Serapa",
+                checkbox4: "Mekhoa ea Bophelo",
+                btn1: " Likhoeli tse tšeletseng",
+                btn2: " Libeke tse tšeletseng",
+                btn3: "Etsa Kakaretso",
+                btn4: " Ngolisa",
+                C: "Khosi e ea Mona",
+                Cselect: "Khosi",
+                P: "Theko E Fa Bophirima",
+                Pselect: "Theko",
+                search: "Batla",
+                Name: "Lebitso",
+                Surname: "Fane",
+                Email: "Aterese ea Imeile",
+                Phone: "Nomoro ea Mohala",
+                total: "Kakaretso e Nyane:",
+                discount: "Theolelo e Sebelisitsoe:",
+                finalTotal: "Kakaretso:",
+                link1: "Lehae",
+                link2: "Likhoso tsa Nako e Telele",
+                link3: "Likhoso tsa Nako e Khuts'oane",
+                link4: "Fumana Quote",
+                link5: "Iteanye le Rona",
+                link6: "Lipehelo le Melao",
+                link7: "Molao Leano",
+                link9: "Re Letsetse ho +278850991017",
+                link10: "Iteanye le Rona ho WhatsApp",
+                link11: "Lehae",
+                link12: "Likhoso tsa Nako e Telele",
+                link13: "Likhoso tsa Nako e Khuts'oane",
+                link14: "Fumana Quote",
+                link15: "Iteanye le Rona"
+            }
+        };
+
+        // Function to switch language content
+        function switchLanguage() {
+            const selectedLang = document.getElementById('language-select').value;
+            document.getElementById('search-input').placeholder = translations[selectedLang].search;
+            document.getElementById('btn1').textContent = translations[selectedLang].btn1;
+            document.getElementById('btn2').textContent = translations[selectedLang].btn2;
+            document.getElementById('link1').textContent = translations[selectedLang].link1;
+            document.getElementById('link2').textContent = translations[selectedLang].link2;
+            document.getElementById('link3').textContent = translations[selectedLang].link3;
+            document.getElementById('link4').textContent = translations[selectedLang].link4;
+            document.getElementById('link5').textContent = translations[selectedLang].link5;
+            document.getElementById('label5').textContent = translations[selectedLang].checkbox5;
+            document.getElementById('label6').textContent = translations[selectedLang].checkbox6;
+            document.getElementById('label7').textContent = translations[selectedLang].checkbox7;
+            document.getElementById('label1').textContent = translations[selectedLang].checkbox1;
+            document.getElementById('label2').textContent = translations[selectedLang].checkbox2;
+            document.getElementById('label3').textContent = translations[selectedLang].checkbox3;
+            document.getElementById('label4').textContent = translations[selectedLang].checkbox4;
+            document.getElementById('C').textContent = translations[selectedLang].C;
+            document.getElementById('Cselect').textContent = translations[selectedLang].Cselect;
+            document.getElementById('P').textContent = translations[selectedLang].P;
+            document.getElementById('Pselect').textContent = translations[selectedLang].Pselect;
+            document.getElementById('checkbox5').textContent = translations[selectedLang].checkbox5;
+            document.getElementById('checkbox6').textContent = translations[selectedLang].checkbox6;
+            document.getElementById('checkbox7').textContent = translations[selectedLang].checkbox7;
+            document.getElementById('checkbox1').textContent = translations[selectedLang].checkbox1;
+            document.getElementById('checkbox2').textContent = translations[selectedLang].checkbox2;
+            document.getElementById('checkbox3').textContent = translations[selectedLang].checkbox3;
+            document.getElementById('checkbox4').textContent = translations[selectedLang].checkbox4;
+            document.getElementById('title1').textContent = translations[selectedLang].title1;
+            document.getElementById('title2').textContent = translations[selectedLang].title2;
+            document.getElementById('dataC1').textContent = translations[selectedLang].dataC1;
+            document.getElementById('dataC2').textContent = translations[selectedLang].dataC2;
+            document.getElementById('dataC3').textContent = translations[selectedLang].dataC3;
+            document.getElementById('Name').placeholder = translations[selectedLang].Name;
+            document.getElementById('Surname').placeholder = translations[selectedLang].Surname;
+            document.getElementById('Email').placeholder = translations[selectedLang].Email;
+            document.getElementById('Phone').placeholder = translations[selectedLang].Phone;
+            document.getElementById('btn3').textContent = translations[selectedLang].btn3;
+            document.getElementById('btn4').textContent = translations[selectedLang].btn4;
+            document.getElementById('total').textContent = translations[selectedLang].total;
+            document.getElementById('discount').textContent = translations[selectedLang].discount;
+            document.getElementById('finalTotal').textContent = translations[selectedLang].finalTotal;
+            document.getElementById('title3').textContent = translations[selectedLang].title3;
+            document.getElementById('title4').textContent = translations[selectedLang].title4;
+            document.getElementById('title5').textContent = translations[selectedLang].title5;
+            document.getElementById('link11').textContent = translations[selectedLang].link11;
+            document.getElementById('link12').textContent = translations[selectedLang].link12;
+            document.getElementById('link13').textContent = translations[selectedLang].link13;
+            document.getElementById('link14').textContent = translations[selectedLang].link14;
+            document.getElementById('link15').textContent = translations[selectedLang].link15;
+            document.getElementById('link6').textContent = translations[selectedLang].link6;
+            document.getElementById('link7').textContent = translations[selectedLang].link7;
+            document.getElementById('link9').textContent = translations[selectedLang].link9;
+            document.getElementById('link10').textContent = translations[selectedLang].link10;
+        }
+    </script>
+
+</head>
+<header>
+
+    <body>
+        <main>
+            <nav>
+                <div id="nav">
+                    <a href="index.html"><i class="fa-brands fa-tiktok"></i></a>
+                    <a href="index.html"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="index.html"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="index.html"><i class="fas fa-map"></i> Johannesburg</a>
+                    <a href="index.html"><i class="fas fa-square-phone"></i> Call Us: 0237632674</a>
+                </div>
+            </nav>
+            </div>
+            <div id="tasks"> <img
+                    src="/_img/link href='httpsfonts.googleapis.comcssfamily=Poppins' rel='stylesheet' (1).png"
+                    alt="Circle Image" class="circle" />
+                <form id="search" onsubmit="return handleSearch(event)">
+                    <input type="text" id="search-input" placeholder="Search for a course" required>
+                    <button type="submit"><i class="fas fa-search"></i></button>
+                </form>
+
+                <script>
+                    const courses = [
+                        { name: "Sewing", detailsPage: "sewing.html" },
+                        { name: "Cooking", detailsPage: "cooking.html" },
+                        { name: "Landscaping", detailsPage: "landscaping.html" },
+                        { name: "Life Skills", detailsPage: "life-skills.html" },
+                        { name: "First Aid", detailsPage: "first-aid.html" },
+                        { name: "Child Minding", detailsPage: "child-minding.html" },
+                        { name: "Garden Maintenance", detailsPage: "garden-maintenance.html" },
+                    ];
+
+                    function handleSearch(event) {
+                        event.preventDefault();
+
+                        const query = document.getElementById('search-input').value.trim().toLowerCase();
+                        const course = courses.find(course => course.name.toLowerCase() === query);
+
+                        if (course) {
+                            // Redirect to the course details page if found
+                            window.location.href = course.detailsPage;
+                        } else {
+                            // Handle case where course is not found
+                            alert("Course not found. Please try again.");
+                        }
+                    }
+                </script>
+                <a href="short-courses.html"><button id="btn1" data-translate="btn1">Six-weeks</button></a>
+                <a href="index.html"><button id="btn2" data-translate="btn2">Six-months</button></a>
+                <a href="quote-page.html"><i class="fa-solid fa-cart-shopping"></i></a>
+                <div class="language-selector">
+                    <i class="fas fa-globe" id="globe-icon" onclick="toggleLanguageOptions()"></i>
+                    <select id="language-select" onchange="switchLanguage()">
+                        <option value="en" selected>English</option>
+                        <option value="af">Afrikaans</option>
+                        <option value="zu">Zulu</option>
+                        <option value="xh">Xhosa</option>
+                        <option value="st">Sotho</option>
+                    </select>
+                </div>
+                <div class="menu-container">
+                    <i class="fa-solid fa-bars" id="menu-icon" onclick="toggleMenu()"></i>
+                    <ul id="menu-list">
+                        <li><a id="link1" href="homepage.html">Home</a></li>
+                        <li><a id="link2" href="index.html">Long-Term Courses</a></li>
+                        <li><a id="link3" href="short-courses.html">Short-Term Courses</a></li>
+                        <li><a id="link4" href="quote-page.html">Get a Quote</a></li>
+                        <li><a id="link5" href="contact-us.html">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+</header>
+<form id="registration-form">
+    <h2 id="title1">Checkout</h2>
+    <p id="dataC1">Selection</p>
+    <div class="progress-container ">
+        <div class="progress-bar" id="progress-bar1">
+        </div>
+    </div>
+
+    <p id="dataC2">Personal Details</p>
+    <div class="progress-container2">
+        <div class="progress-bar" id="progress-bar2">
+        </div>
+    </div>
+    <p id="dataC3">Check Data</p>
+    <div class="progress-container3">
+        <div class="progress-bar" id="progress-bar3">
+        </div>
+    </div>
+
+    <form>
+        <div id="selection">
+            <div id="short">
+                <label for="checkbox5">
+                    <input type="checkbox" id="checkbox5" name="options" value="option5">
+                    <span id="label5">Child Minding</span>
+                    <p id="tag">R750</p>
+                </label>
+
+                <label for="checkbox6">
+                    <input type="checkbox" id="checkbox6" name="options" value="option6">
+                    <span id="label6">Cooking</span>
+                    <p id="tag">R750</p>
+                </label>
+
+                <label for="checkbox7">
+                    <input type="checkbox" id="checkbox7" name="options" value="option7">
+                    <span id="label7">Garden Maintenance</span>
+                    <p id="tag">R750</p>
+                </label>
+            </div>
+
+            <div id="long">
+                <label for="checkbox1">
+                    <input type="checkbox" id="checkbox1" name="options" value="option1">
+                    <span id="label1">First-Aid</span>
+                    <p id="tag">R1500</p>
+                </label><br>
+
+                <label for="checkbox2">
+                    <input type="checkbox" id="checkbox2" name="options" value="option2">
+                    <span id="label2">Sewing</span>
+                    <p id="tag">R1500</p>
+                </label><br>
+
+                <label for="checkbox3">
+                    <input type="checkbox" id="checkbox3" name="options" value="option3">
+                    <span id="label3">Landscaping</span>
+                    <p id="tag">R1500</p>
+                </label>
+
+                <label for="checkbox4">
+                    <input type="checkbox" id="checkbox4" name="options" value="option4">
+                    <span id="label4">Life Skills</span>
+                    <p id="tag">R1500</p>
+                </label>
+            </div>
+        </div>
+    </form>
+    <!-- Course and price display area -->
+    <h3 id="Cselect">Course</h3>
+    <p id="C">Course goes here</p>
+    <h3 id="Pselect">Price</h3>
+    <p id="P">Price goes here</p>
+
+    <p>_________________________________________________________________________________________</p>
+    <h2 id="title2">Personal Details</h2>
+
+    <form>
+        <div> <label for="Name"></label>
+            <input type="text" id="Name" name="Name" placeholder="Name">
+        </div>
+    </form>
+
+    <form>
+        <div> <label for=" Surname"></label>
+            <input type="text" id="Surname" name="Surname" placeholder="Surname">
+        </div>
+    </form>
+
+    <form>
+        <div><label for=" Email"></label>
+            <input type="text" id="Email" name="Email Adress" placeholder="Email Address">
+        </div>
+    </form>
+
+    <form>
+        <div><label for=" Phone Number"></label>
+            <input type="number" id="Phone" name="Phone Number" placeholder="Phone Number">
+        </div>
+    </form>
+</form>
+<button id="btn3">Generate Total</button>
+<button id="btn4">Register</button>
+<p id="register-message" style="display: none;"></p>
+</div>
+<p>_____________________________________________________________________________________________________________________________________________
+</p>
+
+<h3 id="final">
+    <div id="total">Subtotal:</div>
+    <div>VAT: 15%</div>
+    <div id="discount">Discount Aplied:</div>
+    <div id="finalTotal">Total:</div>
+</h3>
+
+</main>
+<!-- Footer Section -->
+<footer id="foot">
+    <div class="footer-content">
+        <div><img src="/_img/link href='httpsfonts.googleapis.comcssfamily=Poppins' rel='stylesheet' (1).png"
+                alt="Circle Image" class="circle" />
+            <p>EN</p>
+
+            <p>Empowering The Nation</p>
+
+            <p> &copy; 2024 EmpoweringTheNation. All rights reserved.</p>
+        </div>
+        <div class="footer-column">
+            <h3 id="title3">Explore</h3>
+            <div id="i1">
+                <div><a id="link11" href="homepage.html">Home</a></div>
+                <div><a id="link12" href="index.html">Long-Term Courses</a></div>
+                <div><a id="link13" href="short-courses.html">Short-Term Courses</a></div>
+                <div><a id="link14" href="quote-page.html">Get a Quote</a></div>
+                <div><a id="link15" href="contact-us.html">Contact Us</a></div>
+            </div>
+        </div>
+        <div class="footer-column2">
+            <h3 id="title4">Company</h3>
+            <div id="i2">
+                <div><a id="link6" href="terms-and-conditions.html">Terms and Conditions</a></div>
+                <div><a id="link7" href="legal-policy.html">Legal Policy</a></ldiv>
+                </div>
+            </div>
+            <div class="footer-column3">
+                <h3 id="title5">Get in Touch</h3>
+                <div id="i3">
+                    <div><a href="#">Mall of Africa</a></div>
+                    <div><a id="link9" href="tel:+1234567890"> Call us on +27-8850991017</a></div>
+                    <div><a id="link10" href="whatsapp://send?phone=+264818623210" target="_blank">Contact us on
+                            WhatsApp</a></div>
+                    <div><a
+                            href="mailto:info@EmpoweringTheNation.co.za?subject=Enquiry from web site">info@EmpoweringTheNation.in</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="script.js"></script>
+
+<script>
+    // Checking if requirements are met
+    function validateForm() {
+        // Get all checkboxes for courses
+        const courseCheckboxes = document.querySelectorAll('input[name="options"]');
+        let courseSelected = false;
+
+        // Check if any course checkbox is selected
+        courseCheckboxes.forEach((checkbox) => {
+            if (checkbox.checked) {
+                courseSelected = true;
+            }
+        });
+
+        // Get personal details fields
+        const name = document.getElementById('Name').value.trim();
+        const surname = document.getElementById('Surname').value.trim();
+        const email = document.getElementById('Email').value.trim();
+        const phone = document.getElementById('Phone').value.trim();
+
+        // Check if all fields are filled in and at least one course is selected
+        if (courseSelected && name && surname && email && phone) {
+            // Show success message
+            alert("Successfully Registered");
+        } else {
+            // Show error message if fields are missing
+            alert("Please fill all fields and select at least one course.");
+        }
+    }
+
+    document.getElementById('btn4').addEventListener('click', function (event) {
+        event.preventDefault(); // Prevent form submission
+        validateForm(); // Call validation function
+    });
+</script>
+
+</body>
+
+</html>

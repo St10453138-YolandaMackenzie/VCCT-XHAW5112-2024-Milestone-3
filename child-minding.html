@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Child Minding</title>
+   <link rel="stylesheet" href="style.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+   <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+   <style>
+       .faq-list {
+           list-style-type: none;
+           padding: 0;
+       }
+
+       .question {
+           cursor: pointer;
+           display: flex;
+           justify-content: space-between;
+           align-items: center;
+           padding: 10px;
+           border-bottom: 1px solid #ead9d9;
+           font-weight: bold;
+       }
+
+       .chevron {
+           transition: transform 0.3s;
+       }
+
+       .answer {
+           padding: 10px;
+           display: none;
+           border-bottom: 1px solid #ddd;
+       }
+   </style>
+
+   <script>
+       const translations = {
+           en: {
+               search: " Search",
+               btn1: "Six-weeks",
+               btn2: "Six-months",
+               link1: "Home",
+               link2: "Long-Term Courses",
+               link3: "Short-Term Courses",
+               link4: "Get a Quote",
+               link5: "Contact Us",
+               Title: "Child Midning",
+               descrip: "To provide basic child and baby care",
+               CC1: "Course Content",
+               link6: "Birth to six-months old baby needs",
+               link7: "Seven-month to one year old needs",
+               link8: "Toddler needs",
+               link9: "Educational toys",
+               description1: "Options",
+               description2: "Flexible start every two weeks",
+               description3: "Up to 25% discount for multiple course selection",
+               testimon: "The Child Minding course gave me skills and confidence to care for children effectively and safely. I now feel fully prepared to handle any child care situation with ease.",
+               FAQ: "FAQ - Frequently Asked Questions",
+               FAQ1: "How long does a course last?",
+               A1: "The course duration varies by program, but generally lasts between 6 weeks to 6 months.",
+               FAQ2: "How do I provide feedback on the course",
+               A2: "You can provide feedback through our online portal or by contacting our support team directly.",
+               FAQ3: "Can I withdraw from the course?",
+               A3: "Yes, you can withdraw, but please review the terms and conditions for refund policies.",
+               link10: "Explore",
+               link11: "Home",
+               link12: "Long-Term Courses",
+               link13: "Short-Term courses",
+               link14: "Get a Quote",
+               link15: "Contact Us",
+               link16: "Company",
+               link17: "Terms and Conditions",
+               link18: "Legal Policy",
+               link20: "Get in Touch",
+               link21: "Mall of Africa",
+               link22: "Call us on Call us on +27-8850991017",
+               link23: "Contactus on WhatsApp"
+           },
+           af: {
+               search: "Soek",
+               btn1: "Ses weke",
+               btn2: "Ses maande",
+               link1: "Tuis",
+               link2: "Langtermynkursusse",
+               link3: "Korttermynkursusse",
+               link4: "Kry 'n Kwotasie",
+               link5: "Kontak ons",
+               Title: "Kinderversorging",
+               descrip: "Om basiese kindersorg en babasorg te bied",
+               CC1: "Kursusinhoud",
+               link6: "Behoeftes vir babas vanaf geboorte tot ses maande",
+               link7: "Behoeftes van sewe maande tot een jaar oud",
+               link8: "Peuterbehoeftes",
+               link9: "Opvoedkundige speelgoed",
+               description1: "Opsies",
+               description2: "Buigsame aanvang elke twee weke",
+               description3: "Tot 25% afslag vir verskeie kursusse",
+               testimon: "Die Kinderoppaskursus het my vaardighede en selfvertroue gegee om kinders effektief en veilig te versorg. Ek voel nou ten volle voorbereid om enige kinderoppassituasie met gemak te hanteer.",
+               FAQ: "FAQ - Gereelde Vrae",
+               FAQ1: "Hoe lank duur 'n kursus?",
+               A1: "Die kursusduur wissel volgens program, maar duur gewoonlik tussen 6 weke tot 6 maande.",
+               FAQ2: "Hoe gee ek terugvoer oor die kursus?",
+               A2: "Jy kan terugvoer gee deur ons aanlyn portaal of deur ons ondersteuningspan direk te kontak.",
+               FAQ3: "Kan ek van die kursus onttrek?",
+               A3: "Ja, jy kan onttrek, maar hersien asseblief die bepalings en voorwaardes vir terugbetalingsbeleide.",
+               link10: "Verken",
+               link11: "Tuis",
+               link12: "Langtermynkursusse",
+               link13: "Korttermynkursusse",
+               link14: "Kry 'n Kwotasie",
+               link15: "Kontak Ons",
+               link16: "Maatskappy",
+               link17: "Bepalings en Voorwaardes",
+               link18: "Regsgeldi Beleid",
+               link20: "Kom in Aanraking",
+               link21: "Mall of Africa",
+               link22: "Bel ons by +27-8850991017",
+               link23: "Kontak ons op WhatsApp"
+           },
+           zu: {
+               search: "Sesha",
+               btn1: "Izinsuku eziyisithupha",
+               btn2: "Izinyanga eziyisithupha",
+               link1: "Ikhaya",
+               link2: "Izifundo zesikhathi eside",
+               link3: "Izifundo zesikhathi esifushane",
+               link4: "Thola I-Quote",
+               link5: "Xhumana nathi",
+               Title: "Ukunakekela Izingane",
+               descrip: "Ukunikeza ukunakekelwa okuyisisekelo kwezingane nezinsana",
+               CC1: "Okuqukethwe Kwesifundo",
+               link6: "Izidingo zezinsana ezisukela ekuzalweni kuya ezinyangeni eziyisithupha",
+               link7: "Izidingo zezingane ezinonyaka owodwa",
+               link8: "Izidingo zabantwana abancane",
+               link9: "Amathoyizi emfundo",
+               description1: "Izinketho",
+               description2: "Ukuqala njalo emva kwamaviki amabili",
+               description3: "Isaphulelo esifika ku-25% ngezifundo eziningi",
+               testimon: "Ikilasi lokunakekela izingane linginike amakhono nesibindi sokunakekela izingane ngendlela ephumelelayo nephephile. Manje sengizizwa ngilungiselele ngokuphelele ukubhekana nanoma yisiphi isimo sokunakekela izingane kalula.",
+               FAQ: "FAQ - Imibuzo Evame Ukubuzwa",
+               FAQ1: "Isifundo sithatha isikhathi esingakanani?",
+               A1: "Ubude besifundo buyahlukahluka ngohlelo, kodwa ngokuvamile buhlala phakathi kwamaviki angu-6 kuya ezinyangeni ezingu-6.",
+               FAQ2: "Nginganikeza kanjani impendulo ngesifundo?",
+               A2: "Unganikeza impendulo ngengosi yethu eku-inthanethi noma ngokuthintana nethimba lethu losekelo ngokuqondile.",
+               FAQ3: "Ngingasula yini esifundweni?",
+               A3: "Yebo, ungahoxa, kodwa sicela ubuyekeze imigomo nemibandela yezinqubomgomo zokubuyiselwa kwemali.",
+               link10: "Hlola",
+               link11: "Ikhaya",
+               link12: "Izifundo zesikhathi eside",
+               link13: "Izifundo zesikhathi esifushane",
+               link14: "Thola I-Quote",
+               link15: "Xhumana Nathi",
+               link16: "Inkampani",
+               link17: "Imigomo Nemibandela",
+               link18: "Ezomthetho Inqubomgomo",
+               link20: "Thintana Nathi",
+               link21: "Mall of Africa",
+               link22: "Sishayele ku +27-8850991017",
+               link23: "Thintana nathi ku-WhatsApp"
+           },
+           xh: {
+               search: "Khangela",
+               btn1: "Iiveki ezithandathu",
+               btn2: "Iinyanga ezithandathu",
+               link1: "Ekhaya",
+               link2: "Izifundo zexesha elide",
+               link3: "Izifundo zexesha elifutshane",
+               link4: "Fumana ixabiso",
+               link5: "Qhagamshelana nathi",
+               Title: "Ukukhathalela abantwana",
+               descrip: "Ukunika ukhathalelo olusisiseko lwabantwana neentsana",
+               CC1: "Umxholo weKholeji",
+               link6: "Iimfuno zosana ukusuka ekuzalweni ukuya kwiinyanga ezintandathu",
+               link7: "Iimfuno zomntwana oneminyaka esixhenxe ukuya kunyaka omnye",
+               link8: "Iimfuno zomntwana omncinci",
+               link9: "Izinto zokudlala zemfundo",
+               description1: "Iinketho",
+               description2: "Ukuqala rhoqo rhoqo kwiiveki ezimbini",
+               description3: "Isaphulelo esingange 25% kwizifundo ezininzi",
+               testimon: "Ikhosi yeMinding yeNgane indinike izakhono kunye nokuzethemba zokukhathalela iingane ngendlela efanelekileyo nekhuselekileyo. Ngoku ndiziva ndilungile ngokupheleleyo ukuba ndijongane naziphi na iimeko zokukhathalela iingane ngempumelelo.",
+               FAQ: "FAQ - Imibuzo Ebuzwa Rhoqo",
+               FAQ1: "Kuthatha ixesha elingakanani isifundo?",
+               A1: "Ixesha lekhosi liyahluka ngokwenkqubo, kodwa ngokuqhelekileyo lihlala phakathi kweeveki ezi-6 ukuya kwiinyanga ezi-6.",
+               FAQ2: "Ndinganika njani ingxelo ngesifundo?",
+               A2: "Unokunika ingxelo nge-portal yethu ye-intanethi okanye ngokuqhagamshelana neqela lethu lenkxaso ngokuthe ngqo.",
+               FAQ3: "Ndingarhoxa na kwisifundo?",
+               A3: "Ewe, unokurhoxisa, kodwa nceda ubuyekeze imigaqo kunye nemiqathango yemigaqo-nkqubo yokubuyisela.",
+               link10: "Hlola",
+               link11: "Ekhaya",
+               link12: "Izifundo zexesha elide",
+               link13: "Izifundo zexesha elifutshane",
+               link14: "Fumana ixabiso",
+               link15: "Qhagamshelana nathi",
+               link16: "Inkampani",
+               link17: "Imiqathango neMiqathango",
+               link18: "Ezomthetho Umgaqo-nkqubo",
+               link20: "Nxibelelana nathi",
+               link21: "Mall of Africa",
+               link22: "Sitsalele umnxeba ku +27-8850991017",
+               link23: "Qhagamshelana nathi ku-WhatsApp"
+           },
+           st: {
+               search: "Batla",
+               btn1: "Libeke tse tšeletseng",
+               btn2: "Likhoeli tse tšeletseng",
+               link1: "Lehae",
+               link2: "Lithuto tsa nako e telele",
+               link3: "Lithuto tsa nako e khuts'oane",
+               link4: "Fumana Quote",
+               link5: "Iteanye le rona",
+               Title: "Tlhokomelo ea Bana",
+               descrip: "Ho fana ka tlhokomelo ea bana le masea",
+               CC1: "Lihlooho tsa Thuto",
+               link6: "Litlhoko tsa lesea ho tloha ho tsoalo ho isa likhoeling tse tšeletseng",
+               link7: "Litlhoko tsa lesea le nang le selemo",
+               link8: "Litlhoko tsa ngoana e monyenyane",
+               link9: "Lintho tsa ho bapala tsa thuto",
+               description1: "Dikgetho",
+               description2: "Qalo e feto-fetohang beke le beke",
+               description3: "Phokotso ea ho fihla ho 25% bakeng sa likhetho tse ngata",
+               testimon: "Khosi ea tlhokomelo ea bana e nthutile litsebo le boits'epo ba ho tlhokomela bana ka katleho le ka bolokolohi. Hona joale ke ikutloa ke loketse ho sebetsana le mofuta ofe kapa ofe oa boemo ba tlhokomelo ea bana ka bonolo.",
+               FAQ: "FAQ - Lipotso Tse Botsoang Khafetsa",
+               FAQ1: "Thuto e nka nako e kae?",
+               A1: "Nako ea nako ea thupelo e fapana ho ea ka lenaneo, empa hangata e nka libeke tse 6 ho isa ho likhoeli tse 6.",
+               FAQ2: "Ke fana joang ka maikutlo ka thuto?",
+               A2: "O ka fana ka maikutlo ka portal ea rona ea inthanete kapa ka ho ikopanya le sehlopha sa rona sa tšehetso ka kotloloho.",
+               FAQ3: "Na nka tlohela thuto?",
+               A3: "E, u ka ikhula, empa ka kopo, hlahloba lipehelo le lipehelo tsa maano a puseletso.",
+               link10: "Hlahloba",
+               link11: "Lehae",
+               link12: "Lithuto tsa nako e telele",
+               link13: "Lithuto tsa nako e khuts'oane",
+               link14: "Fumana Quote",
+               link15: "Iteanye le Rona",
+               link16: "Khamphani",
+               link17: "Melao le Maemo",
+               link18: "Molao Leano",
+               link20: "Iteanye le Rona",
+               link21: "Mall of Africa",
+               link22: "Re letsetse ho +27-8850991017",
+               link23: "Iteanye le rona ho WhatsApp"
+           }
+
+       };
+       function switchLanguage() {
+           const selectedLang = document.getElementById('language-select').value;
+
+
+           document.getElementById('search-input').placeholder = translations[selectedLang].search;
+           document.getElementById('btn1').textContent = translations[selectedLang].btn1;
+           document.getElementById('btn2').textContent = translations[selectedLang].btn2;
+           document.getElementById('link1').textContent = translations[selectedLang].link1;
+           document.getElementById('link2').textContent = translations[selectedLang].link2;
+           document.getElementById('link3').textContent = translations[selectedLang].link3;
+           document.getElementById('link4').textContent = translations[selectedLang].link4;
+           document.getElementById('link5').textContent = translations[selectedLang].link5;
+           document.getElementById('Title').textContent = translations[selectedLang].Title;
+           document.getElementById('descrip').textContent = translations[selectedLang].descrip;
+           document.getElementById('CC1').textContent = translations[selectedLang].CC1;
+           document.getElementById('link6').textContent = translations[selectedLang].link6;
+           document.getElementById('link7').textContent = translations[selectedLang].link7;
+           document.getElementById('link8').textContent = translations[selectedLang].link8;
+           document.getElementById('link9').textContent = translations[selectedLang].link9;
+           document.getElementById('description1').textContent = translations[selectedLang].description1;
+           document.getElementById('description2').textContent = translations[selectedLang].description2;
+           document.getElementById('description3').textContent = translations[selectedLang].description3;
+           document.getElementById('testimon').textContent = translations[selectedLang].testimon;
+           document.getElementById('FAQ').textContent = translations[selectedLang].FAQ;
+           document.getElementById('FAQ1').textContent = translations[selectedLang].FAQ1;
+           document.getElementById('A1').textContent = translations[selectedLang].A1;
+           document.getElementById('FAQ2').textContent = translations[selectedLang].FAQ2;
+           document.getElementById('A2').textContent = translations[selectedLang].A2;
+           document.getElementById('FAQ3').textContent = translations[selectedLang].FAQ3;
+           document.getElementById('A3').textContent = translations[selectedLang].A3;
+           document.getElementById('link10').textContent = translations[selectedLang].link10;
+           document.getElementById('link11').textContent = translations[selectedLang].link11;
+           document.getElementById('link12').textContent = translations[selectedLang].link12;
+           document.getElementById('link12').textContent = translations[selectedLang].link13;
+           document.getElementById('link13').textContent = translations[selectedLang].link13;
+           document.getElementById('link14').textContent = translations[selectedLang].link14;
+           document.getElementById('link15').textContent = translations[selectedLang].link15;
+           document.getElementById('link16').textContent = translations[selectedLang].link16;
+           document.getElementById('link17').textContent = translations[selectedLang].link17;
+           document.getElementById('link18').textContent = translations[selectedLang].link18;
+           document.getElementById('link20').textContent = translations[selectedLang].link20;
+           document.getElementById('link21').textContent = translations[selectedLang].link21;
+           document.getElementById('link22').textContent = translations[selectedLang].link22;
+           document.getElementById('link23').textContent = translations[selectedLang].link23;
+
+
+       }
+       document.addEventListener('DOMContentLoaded', () => {
+           const languageSelect = document.getElementById('language-select');
+           if (languageSelect) {
+               languageSelect.addEventListener('change', switchLanguage);
+           }
+           // Initialize the language to the default language
+           switchLanguage();
+       });
+       function toggleAnswer(questionElement) {
+           const answerElement = questionElement.nextElementSibling;
+           const chevron = questionElement.querySelector('.chevron i');
+
+           // Toggle answer visibility
+           if (answerElement.style.display === 'none') {
+               answerElement.style.display = 'block';
+               chevron.style.transform = 'rotate(180deg)'; // Rotate the arrow
+           } else {
+               answerElement.style.display = 'none';
+               chevron.style.transform = 'rotate(0deg)'; // Reset the arrow
+           }
+       }
+   </script>
+
+<body>
+   <nav>
+       <div id="nav">
+           <a href="index.html"><i class="fa-brands fa-tiktok"></i></a>
+           <a href="index.html"><i class="fa-brands fa-instagram"></i></a>
+           <a href="index.html"><i class="fa-brands fa-facebook"></i></a>
+           <a href="index.html"><i class="fas fa-map"></i> Johannesburg</a>
+           <a href="index.html"><i class="fas fa-square-phone"></i> Call Us: 0237632674</a>
+       </div>
+   </nav>
+   </div>
+   <div id="tasks"> <img src="/_img/link href='httpsfonts.googleapis.comcssfamily=Poppins' rel='stylesheet' (1).png"
+           alt="Circle Image" class="circle" />
+           <form id="search" onsubmit="return handleSearch(event)">
+            <input type="text" id="search-input" placeholder="Search for a course" required>
+            <button type="submit"><i class="fas fa-search"></i></button>
+        </form>
+
+        <script>
+            const courses = [
+                { name: "Sewing", detailsPage: "sewing.html" },
+                { name: "Cooking", detailsPage: "cooking.html" },
+                { name: "Landscaping", detailsPage: "landscaping.html" },
+                { name: "Life Skills", detailsPage: "life-skills.html" },
+                { name: "First Aid", detailsPage: "first-aid.html" },
+                { name: "Child Minding", detailsPage: "child-minding.html" },
+                { name: "Garden Maintenance", detailsPage: "garden-maintenance.html" },
+            ];
+            
+            function handleSearch(event) {
+                event.preventDefault(); // Prevent the default form submission behavior
+            
+                const query = document.getElementById('search-input').value.trim().toLowerCase();
+                const course = courses.find(course => course.name.toLowerCase() === query);
+            
+                if (course) {
+                    // Redirect to the course details page if found
+                    window.location.href = course.detailsPage;
+                } else {
+                    // Handle case where course is not found
+                    alert("Course not found. Please try again.");
+                }
+            }
+            </script>
+       <a href="short-courses.html"><button id="btn1">Six-weeks</button></a>
+       <a href="index.html"><button id="btn2">Six-months</button></a>
+       <a href="quote-page.html"><i class="fa-solid fa-cart-shopping"></i></a>
+       <div class="language-selector">
+           <i class="fas fa-globe" id="globe-icon" onclick="toggleLanguageOptions()"></i>
+           <select id="language-select">
+               <option value="en" selected>English</option>
+               <option value="af">Afrikaans</option>
+               <option value="zu">Zulu</option>
+               <option value="xh">Xhosa</option>
+               <option value="st">Sotho</option>
+           </select>
+       </div>
+
+       <div class="menu-container">
+           <i class="fa-solid fa-bars" id="menu-icon" onclick="toggleMenu()"></i>
+           <ul id="menu-list">
+               <li><a id="link1" href="homepage.html">Home</a></li>
+               <li><a id="link2" href="index.html">Long-Term Courses</a></li>
+               <li><a id="link3" href="short-courses.html">Short-Term Courses</a></li>
+               <li><a id="link4" href="quote-page.html">Get a Quote</a></li>
+               <li><a id="link5" href="contact-us.html">Contact Us</a></li>
+           </ul>
+       </div>
+   </div>
+   <div>
+       <div>
+           <h2 id="Title" class="Title">Child Minding</h2>
+           <img class="main" src="/_img/Child minding.jpg" alt="Child Minding" width="505" height="298" />
+
+           <div>
+
+               <p id="descrip">To provide basic child and baby care</p>
+               <div id="content">
+                   <h3 id="CC1">Course Content:</h3>
+
+                   <ul>
+
+                       <li id="link6"> Birth to six-month old baby needs </li>
+
+                       <li id="link7"> seven-month to one year old needs </li>
+
+                       <li id="link8"> Toddler needs</li>
+
+                       <li id="link9">Educational toys</li>
+
+                   </ul>
+               </div>
+
+               <ul id="check">
+
+                   <div>
+                       <p><i class="fa-solid fa-check"></i> <span id="description1">Options</span> </p>
+                   </div>
+
+                   <div>
+                       <p><i class="fa-solid fa-check"></i> <span id="description2">Flexible start every two
+                               weeks</span> </p>
+                   </div>
+
+                   <div>
+                       <p><i class="fa-solid fa-check"></i> <span id="description3">Up to 25% discount for multiple
+                               course selection</span> </p>
+                   </div>
+
+               </ul>
+
+               <div class="price-tag">R 1500</div>
+
+           </div>
+
+
+           <div id="video">
+
+            <iframe width="560" height="315" src=https://www.youtube.com/embed/vheeQM4DyzM?si=v-2muyNna5gR-mvT title="YouTube video player" 
+            frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+           </div>
+
+           <h3 id="name"><i class="fas fa-user-circle icon"></i> Shekhinah Khumalo</h3>
+
+           <div>
+               <p id="testimon">"The Child Minding course gave me skills and confidence to care for children effectively and safely. I now feel fully prepared to handle any child care situation with ease."</p>
+           </div>
+
+           <div>
+
+               <h3 id="FAQ">FAQ - Frequently Asked Questions</h3>
+
+               <ul class="faq-list">
+                   <li class="faq-item">
+                       <div class="question" onclick="toggleAnswer(this)">
+                           <span id="FAQ1">How long does a course last?</span>
+                           <span class="chevron"><i class="fa fa-chevron-down"></i></span>
+                       </div>
+                       <div class="A1" style="display: none;">
+                           <span id="A1">The course duration varies by program, but generally lasts between 6 weeks to
+                               6
+                               months.</span>
+                       </div>
+                   </li>
+
+                   <li class="faq-item">
+                       <div class="question" onclick="toggleAnswer(this)">
+                           <span id="FAQ2">How do I provide feedback on the course?</span>
+                           <span class="chevron"><i class="fa fa-chevron-down"></i></span>
+                       </div>
+                       <div class="A2" style="display: none;">
+                           <span id="A2">You can provide feedback through our online portal or by contacting our
+                               support team
+                               directly.</span>
+                       </div>
+                   </li>
+
+                   <li class="faq-item">
+                       <div class="question" onclick="toggleAnswer(this)">
+                           <span id="FAQ3">Can I withdraw from the course?</span>
+                           <span class="chevron"><i class="fa fa-chevron-down"></i></span>
+                       </div>
+                       <div class="A3" style="display: none;">
+                           <span id="A3">Yes, you can withdraw, but please review the terms and conditions for refund
+                               policies.</span>
+                       </div>
+                   </li>
+               </ul>
+
+               </main>
+               <!-- Footer Section -->
+    <footer id="foot">
+        <div class="footer-content">
+            <div><img src="/_img/link href='httpsfonts.googleapis.comcssfamily=Poppins' rel='stylesheet' (1).png"
+                    alt="Circle Image" class="circle" />
+                <p>EN</p>
+
+                <p>Empowering The Nation</p>
+
+                <p> &copy; 2024 EmpoweringTheNation. All rights reserved.</p>
+            </div>
+            <div class="footer-column">
+                <h3 id="link10">Explore</h3>
+                <div id="i1">
+                    <div><a id="link11" href="homepage.html">Home</a></div>
+                    <div><a id="link12" href="index.html">Long-Term Courses</a></div>
+                    <div><a id="link13" href="short-courses.html">Short-Term Courses</a></div>
+                    <div><a id="link14" href="quote-page.html">Get a Quote</a></div>
+                    <div><a id="link15" href="contact-us.html">Contact Us</a></div>
+                </div>
+            </div>
+            <div class="footer-column2">
+                <h3 id="link16">Company</h3>
+                <div id="i2">
+                    <div><a id="link17" href="terms-and-conditions.html">Terms and Conditions</a></div>
+                    <div><a id="link18" href="legal-policy.html">Legal Policy</a></ldiv>
+                    </div>
+                </div>
+                <div class="footer-column3">
+                    <h3 id="link20">Get in Touch</h3>
+                    <div id="i3">
+                        <div><a id="link21" href="#">Mall of Africa</a></div>
+                        <div><a id="link22" href="tel:+1234567890"> Call us on +27-8850991017</a></div>
+                        <div><a id="link23" href="whatsapp://send?phone=+264818623210" target="_blank">Contact us on
+                                WhatsApp</a></div>
+                        <div><a
+                                href="mailto:info@EmpoweringTheNation.co.za?subject=Enquiry from web site">info@EmpoweringTheNation.in</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+ </footer>
+               <script src="script.js"></script>
+</body>
+
+</html>

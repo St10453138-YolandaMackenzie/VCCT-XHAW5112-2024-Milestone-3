@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+   <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+   <link href="style.css" rel="stylesheet">
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Short-Term Courses</title>
+   <link rel="stylesheet" href="style.css">
+   <script>
+       const translations = {
+           en: {
+               search: "Search",
+               btn1: "Six-weeks",
+               btn2: "Six-months",
+               link1: "Home",
+               link2: "Long-Term Courses",
+               link3: "Short-Term Courses",
+               link4: "Get a Quote",
+               link5: "Contact Us",
+               link19: "Short-Term Courses",
+               course5: "Child Minding",
+               Curric1: "Regular Options",
+               Curric2: "Expert Instructions",
+               Curric3: "Up to 25% off",
+               course6: "Cooking",
+               Curric4: "Regular Options",
+               Curric5: "Expert Instructions",
+               Curric6: "Up to 25% off",
+               course7: "Garden Maintenance",
+               Curric7: "Regular Options",
+               Curric8: "Expert Instructors",
+               Curric9: "Up to 25% off",
+               link20: "Explore",
+               link6: "Home",
+               link7: "Long-Term Courses",
+               link8: "Short-Term Courses",
+               link9: "Get a Quote",
+               link11: "Contact Us",
+               link12: "Company",
+               link13: "Legal Policy",
+               title5: "Get in Touch",
+               link16: "Mall of Africa",
+               link10: "Call us on +27-8850991017",
+               link21: "Terms and Conditions",
+               link22: "Contact us on WhatsApp"
+
+           },
+
+           af: {
+               search: "Soek",
+               btn1: "Ses weke",
+               btn2: "Ses maande",
+               link1: "Tuis",
+               link2: "Langtermynkursusse",
+               link3: "Korttermynkursusse",
+               link4: "Kry 'n Kwotasie",
+               link5: "Kontak Ons",
+               link19: "Korttermynkursusse",
+               course5: "Kinderversorging",
+               Curric1: "Gereelde Opsies",
+               Curric2: "Kennersinstruksies",
+               Curric3: "Tot 25% afslag",
+               course6: "Kook",
+               Curric4: "Gereelde Opsies",
+               Curric5: "Kennersinstruksies",
+               Curric6: "Tot 25% afslag",
+               course7: "Tuinonderhoud",
+               Curric7: "Gereelde Opsies",
+               Curric8: "Kennersinstrukteurs",
+               Curric9: "Tot 25% afslag",
+               link20: "Verken",
+               link6: "Tuis",
+               link7: "Langtermynkursusse",
+               link8: "Korttermynkursusse",
+               link9: "Kry 'n Kwotasie",
+               link11: "Kontak Ons",
+               link12: "Maatskappy",
+               link13: "Wettig Beleid",
+               title5: "Kom in Kontak",
+               link16: "Mall of Africa",
+               link10: "Bel ons by +27-8850991017",
+               link21: "Bepalings en Voorwaardes",
+               link22: "Kontak ons op WhatsApp"
+           },
+
+           zu: {
+               search: "Sesha",
+               btn1: "Izinsuku eziyisithupha",
+               btn2: "Izinyanga eziyisithupha",
+               link1: "Ikhaya",
+               link2: "Izifundo Zesikhathi Eside",
+               link3: "Izifundo Zesikhathi Esifushane",
+               link4: "Thola Isilinganiso",
+               link5: "Xhumana Nathi",
+               link19: "Izifundo Zesikhathi Esifushane",
+               course5: "Ukukhathalela Izingane",
+               Curric1: "Izinketho Ezivamile",
+               Curric2: "Izifundo Zoqeqeshi",
+               Curric3: "Isaphulelo Esifika Ku-25%",
+               course6: "Ukupheka",
+               Curric4: "Izinketho Ezivamile",
+               Curric5: "Izifundo Zoqeqeshi",
+               Curric6: "Isaphulelo Esifika Ku-25%",
+               course7: "Ukugcinwa Kwengadi",
+               Curric7: "Izinketho Ezivamile",
+               Curric8: "Oqeqeshi Abanolwazi",
+               Curric9: "Isaphulelo Esifika Ku-25%",
+               link20: "Hlola",
+               link6: "Ikhaya",
+               link7: "Izifundo Zesikhathi Eside",
+               link8: "Izifundo Zesikhathi Esifushane",
+               link9: "Thola Isilinganiso",
+               link11: "Xhumana Nathi",
+               link12: "Inkampani",
+               link13: "Okusemthethweni Inqubomgomo",
+               title5: "Xhumana nathi",
+               link16: "Mall of Africa",
+               link10: "Shayela ku-+27-8850991017",
+               link21: "Imigomo Nemibandela",
+               link22: "Xhumana nathi ku-WhatsApp"
+           },
+
+           xh: {
+               search: "Khangela",
+               btn1: "Iiveki ezintandathu",
+               btn2: "Iinyanga ezintandathu",
+               link1: "Ikhaya",
+               link2: "Izifundo Zexesha Elide",
+               link3: "Izifundo Zexesha Elifutshane",
+               link4: "Fumana Isicatshulwa",
+               link5: "Qhagamshelana Nathi",
+               link19: "Izifundo Zexesha Elifutshane",
+               course5: "Ukunakekela Abantwana",
+               Curric1: "Iinketho Ezisisigxina",
+               Curric2: "Imiyalelo Yengcali",
+               Curric3: "Isaphulelo Esifika Kwi-25%",
+               course6: "Ukupheka",
+               Curric4: "Iinketho Ezisisigxina",
+               Curric5: "Imiyalelo Yengcali",
+               Curric6: "Isaphulelo Esifika Kwi-25%",
+               course7: "Ugcino Lwegadi",
+               Curric7: "Iinketho Ezisisigxina",
+               Curric8: "Abafundisi Abanezakhono",
+               Curric9: "Isaphulelo Esifika Kwi-25%",
+               link20: "Phonononga",
+               link6: "Ikhaya",
+               link7: "Izifundo Zexesha Elide",
+               link8: "Izifundo Zexesha Elifutshane",
+               link9: "Fumana Isicatshulwa",
+               link11: "Qhagamshelana Nathi",
+               link12: "Inkampani",
+               link13: "Ngokomthetho Umgaqo-nkqubo",
+               title5: "Qhagamshelana nathi",
+               link16: "Mall of Africa",
+               link10: "Sitsalele ku +27-8850991017",
+               link21: "Imigaqo Nemibandela",
+               link22: "Qhagamshelana nathi ku-WhatsApp"
+           },
+           st: {
+               search: "Batla",
+               btn1: "Libeke Tse tšeletseng",
+               btn2: "Likhoeli Tse tšeletseng",
+               link1: "Lehae",
+               link2: "Lithuto tsa Nako e Telele",
+               link3: "Lithuto tsa Nako e Khuts'oane",
+               link4: "Fumana Khopolo",
+               link5: "Iteanye le Rona",
+               link19: "Lithuto tsa Nako e Khuts'oane",
+               course5: "Tlhokomelo ea Bana",
+               Curric1: "Likhetho Tse Tloaelehileng",
+               Curric2: "Litaelo tsa Litsebi",
+               Curric3: "Phokotso ho fihla ho 25%",
+               course6: "Ho Pheha",
+               Curric4: "Likhetho Tse Tloaelehileng",
+               Curric5: "Litaelo tsa Litsebi",
+               Curric6: "Phokotso ho fihla ho 25%",
+               course7: "Tlhokomelo ea Serapa",
+               Curric7: "Likhetho Tse Tloaelehileng",
+               Curric8: "Bafundisi ba Litsebi",
+               Curric9: "Phokotso ho fihla ho 25%",
+               link20: "Hlahloba",
+               link6: "Lehae",
+               link7: "Lithuto tsa Nako e Telele",
+               link8: "Lithuto tsa Nako e Khuts'oane",
+               link9: "Fumana Khopolo",
+               link11: "Iteanye le Rona",
+               link12: "Khamphani",
+               link13: "Molao Leano",
+               title5: " Ikopanye le rona",
+               link16: "Mall of Africa",
+               link10: "Re Letsetse ho +27-8850991017",
+               link21: "Maemo le Maemo",
+               link22: "Iteanye le rona ka WhatsApp"
+
+           }
+       };
+
+       // Function to switch language content
+       function switchLanguage() {
+           const selectedLang = document.getElementById('language-select').value;
+
+           document.getElementById('search-input').placeholder = translations[selectedLang].search;
+           document.getElementById('title5').textContent = translations[selectedLang].title5;
+           document.getElementById('link20').textContent = translations[selectedLang].link20;
+           document.getElementById('link21').textContent = translations[selectedLang].link21;
+           document.getElementById('link22').textContent = translations[selectedLang].link22;
+           document.getElementById('btn1').textContent = translations[selectedLang].btn1;
+           document.getElementById('btn2').textContent = translations[selectedLang].btn2;
+           document.getElementById('link1').textContent = translations[selectedLang].link1;
+           document.getElementById('link2').textContent = translations[selectedLang].link2;
+           document.getElementById('link3').textContent = translations[selectedLang].link3;
+           document.getElementById('link4').textContent = translations[selectedLang].link4;
+           document.getElementById('link5').textContent = translations[selectedLang].link5;
+           document.getElementById('link19').textContent = translations[selectedLang].link19;
+           document.getElementById('course5').textContent = translations[selectedLang].course5;
+           document.getElementById('course6').textContent = translations[selectedLang].course6;
+           document.getElementById('course7').textContent = translations[selectedLang].course7;
+           document.getElementById('Curric1').textContent = translations[selectedLang].Curric1;
+           document.getElementById('Curric2').textContent = translations[selectedLang].Curric2;
+           document.getElementById('Curric3').textContent = translations[selectedLang].Curric3;
+           document.getElementById('Curric4').textContent = translations[selectedLang].Curric4;
+           document.getElementById('Curric5').textContent = translations[selectedLang].Curric5;
+           document.getElementById('Curric6').textContent = translations[selectedLang].Curric6;
+           document.getElementById('Curric7').textContent = translations[selectedLang].Curric7;
+           document.getElementById('Curric8').textContent = translations[selectedLang].Curric8;
+           document.getElementById('Curric9').textContent = translations[selectedLang].Curric9;
+           document.getElementById('link6').textContent = translations[selectedLang].link6;
+           document.getElementById('link7').textContent = translations[selectedLang].link7;
+           document.getElementById('link8').textContent = translations[selectedLang].link8;
+           document.getElementById('link9').textContent = translations[selectedLang].link9;
+           document.getElementById('link10').textContent = translations[selectedLang].link10;
+           document.getElementById('link11').textContent = translations[selectedLang].link11;
+           document.getElementById('link12').textContent = translations[selectedLang].link12;
+           document.getElementById('link13').textContent = translations[selectedLang].link13;
+           document.getElementById('link15').textContent = translations[selectedLang].link15;
+           document.getElementById('link17').textContent = translations[selectedLang].link17;
+           document.getElementById('link19').textContent = translations[selectedLang].link19;
+
+
+
+
+       } document.addEventListener('DOMContentLoaded', () => {
+           const languageSelect = document.getElementById('language-select');
+           if (languageSelect) {
+               languageSelect.addEventListener('change', switchLanguage);
+           }
+           // Initialize the language to the default language
+           switchLanguage();
+       });
+   </script>
+</head>
+
+<body>
+   <main>
+       <nav>
+           <div id="nav">
+               <a href="index.html"><i class="fa-brands fa-tiktok"></i></i></a>
+               <a href="index.html"><i class="fa-brands fa-instagram"></i></a>
+               <a href="index.html"><i class="fa-brands fa-facebook"></i></a>
+               <a href="index.html"><i class="fas fa-map"></i> Johannesburg</a>
+               <a href="index.html"><i class="fas fa-square-phone"></i> Call Us: 0237632674</a>
+           </div>
+       </nav>
+       </div>
+       <div id="tasks"> <img
+               src="/_img/link href='httpsfonts.googleapis.comcssfamily=Poppins' rel='stylesheet' (1).png"
+               alt="Circle Image" class="circle" />
+               <form id="search" onsubmit="return handleSearch(event)">
+                <input type="text" id="search-input" placeholder="Search for a course" required>
+                <button type="submit"><i class="fas fa-search"></i></button>
+            </form>
+
+            <script>
+                const courses = [
+                    { name: "Sewing", detailsPage: "sewing.html" },
+                    { name: "Cooking", detailsPage: "cooking.html" },
+                    { name: "Landscaping", detailsPage: "landscaping.html" },
+                    { name: "Life Skills", detailsPage: "life-skills.html" },
+                    { name: "First Aid", detailsPage: "first-aid.html" },
+                    { name: "Child Minding", detailsPage: "child-minding.html" },
+                    { name: "Garden Maintenance", detailsPage: "garden-maintenance.html" },
+                ];
+                
+                function handleSearch(event) {
+                    event.preventDefault(); // Prevent the default form submission behavior
+                
+                    const query = document.getElementById('search-input').value.trim().toLowerCase();
+                    const course = courses.find(course => course.name.toLowerCase() === query);
+                
+                    if (course) {
+                        // Redirect to the course details page if found
+                        window.location.href = course.detailsPage;
+                    } else {
+                        // Handle case where course is not found
+                        alert("Course not found. Please try again.");
+                    }
+                }
+                </script>
+           <a href="short-courses.html"><button id="btn1">Six-weeks</button></a>
+           <a href="index.html"><button id="btn2">Six-months</button></a>
+           <a href="quote-page.html"><i class="fa-solid fa-cart-shopping"></i></a>
+           <div class="language-selector">
+               <i class="fas fa-globe" id="globe-icon" onclick="toggleLanguageOptions()"></i>
+               <select id="language-select">
+                   <option value="en" selected>English</option>
+                   <option value="af">Afrikaans</option>
+                   <option value="zu">Zulu</option>
+                   <option value="xh">Xhosa</option>
+                   <option value="st">Sotho</option>
+               </select>
+           </div>
+
+           <div class="menu-container">
+            <i class="fa-solid fa-bars" id="menu-icon" onclick="toggleMenu()"></i>
+            <ul id="menu-list">
+                <li><a id="link1" href="homepage.html">Home</a></li>
+                <li><a id="link2" href="index.html">Long-Term Courses</a></li>
+                <li><a id="link3" href="short-courses.html">Short-Term Courses</a></li>
+                <li><a id="link4" href="quote-page.html">Get a Quote</a></li>
+                <li><a id="link5" href="contact-us.html">Contact Us</a></li>
+            </ul>
+        </div>
+       </div>
+
+       <h1 id="link19">Short-Term Courses</h1>
+       <div class="container">
+           <div id="box6" onclick="window.location.href='child-minding.html';">
+               <div>
+                   <h2 id="course5">Child Minding</h2>
+               </div>
+               <div>
+                   <p> <i class="fa-solid fa-check"></i><span id="Curric1"> Regular Options</span> </p>
+               </div>
+               <div>
+                   <p> <i class="fa-solid fa-check"></i><span id="Curric2"> Expert Instructor</span> </p>
+               </div>
+               <div>
+                   <p> <i class="fa-solid fa-check"></i><span id="Curric3"> Up to 25% off</span> </p>
+               </div>
+               <div>
+                   <p id="price5">R750</p>
+               </div>
+           </div>
+
+           <div id="box7" onclick="window.location.href='cooking.html';">
+               <div>
+                   <h2 id="course6">Cooking</h2>
+               </div>
+               <div>
+                   <p> <i class="fa-solid fa-check"></i><span id="Curric4"> Regular Options</span> </p>
+               </div>
+               <div>
+                   <p> <i class="fa-solid fa-check"></i><span id="Curric5"> Expert Instructors</span> </p>
+               </div>
+               <div>
+                   <p> <i class="fa-solid fa-check"></i><span id="Curric6"> Up to 25% off</span> </p>
+               </div>
+               <div>
+                   <p id="price6">R750</p>
+               </div>
+           </div>
+
+           <div id="box8" onclick="window.location.href='garden-maintenance.html';">
+               <div>
+                   <h2 id="course7">Garden Maintenance</h2>
+               </div>
+               <div>
+                   <p> <i class="fa-solid fa-check"></i><span id="Curric7"> Regular Options</span> </p>
+               </div>
+               <div>
+                   <p> <i class="fa-solid fa-check"></i><span id="Curric8"> Expert Instructors</span> </p>
+               </div>
+               <div>
+                   <p> <i class="fa-solid fa-check"></i><span id="Curric9"> Up to 25% off</span> </p>
+               </div>
+               <div>
+                   <p id="price7">R750</p>
+               </div>
+           </div>
+       </div>
+
+
+   </main>
+   <!-- Footer Section -->
+   <footer id="foot">
+    <div class="footer-content">
+        <div><img src="/_img/link href='httpsfonts.googleapis.comcssfamily=Poppins' rel='stylesheet' (1).png"
+                alt="Circle Image" class="circle" />
+            <p>EN</p>
+
+            <p>Empowering The Nation</p>
+
+            <p> &copy; 2024 EmpoweringTheNation. All rights reserved.</p>
+        </div>
+        <div class="footer-column">
+            <h3 id="link20">Explore</h3>
+            <div id="i1">
+                <div><a id="link6" href="homepage.html">Home</a></div>
+                <div><a id="link7" href="index.html">Long-Term Courses</a></div>
+                <div><a id="link8" href="short-courses.html">Short-Term Courses</a></div>
+                <div><a id="link9" href="quote-page.html">Get a Quote</a></div>
+                <div><a id="link11" href="contact-us.html">Contact Us</a></div>
+            </div>
+        </div>
+        <div class="footer-column2">
+            <h3 id="link12">Company</h3>
+            <div id="i2">
+                <div><a id="link21" href="terms-and-conditions.html">Terms and Conditions</a></div>
+                <div><a id="link13" href="legal-policy.html">Legal Policy</a></ldiv>
+                </div>
+            </div>
+            <div class="footer-column3">
+                <h3 id="title5">Get in Touch</h3>
+                <div id="i3">
+                    <div><a id="link16" href="#">Mall of Africa</a></div>
+                    <div><a id="link10" href="tel:+1234567890"> Call us on +27-8850991017</a></div>
+                    <div><a id="link22" href="whatsapp://send?phone=+264818623210" target="_blank">Contact us on
+                            WhatsApp</a></div>
+                    <div><a
+                            href="mailto:info@EmpoweringTheNation.co.za?subject=Enquiry from web site">info@EmpoweringTheNation.in</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+   <script src="script.js"></script>
+</body>
+
+</html>

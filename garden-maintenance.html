@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Garden Maintenance</title>
+   <link rel="stylesheet" href="style.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+   <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+   <style>
+       ul {
+           list-style-type: none;
+           padding: 0;
+           margin: 0;
+       }
+
+       .question {
+           cursor: pointer;
+           display: flex;
+           justify-content: space-between;
+           align-items: center;
+           padding: 10px;
+           font-weight: bold;
+           border-bottom: 1px solid #ddd;
+       }
+
+       .chevron {
+           transition: transform 0.3s;
+       }
+
+       .answer {
+           padding: 10px;
+           display: none;
+           border-bottom: 1px solid #ddd;
+           margin-top: -5px;
+       }
+   </style>
+   <script>
+       const translations = {
+           en: {
+               search: " Search",
+               title: "Garden Maintenance",
+               descrip: "To provide basic knowledge of watering, pruning, and planting in a domestic garden.",
+               CC1: "Course Content:",
+               CC: "Water restrictions and the watering requirements of indigenous and exotic plants",
+               pruning: "Pruning and propagation of plants",
+               planting: "Planting techniques for different plant types",
+               description1: "Variety to choose from",
+               description2: "Provides skills",
+               description3: "Up to 25% off on courses",
+               username: "Luke John",
+               testimon: "During this course, I have learnt so much, such as good skills and valuable life lessons.",
+               FAQ: "FAQ - Frequently Asked Questions",
+               FAQ1: "How long does the course last?",
+               A1: "The course lasts for six months, with flexible schedules.",
+               FAQ2: "What are the Terms and Conditions on the courses?",
+               A2: "Please refer to our terms and conditions page for full details.",
+               title1: "Explore",
+               title2: "Company",
+               btn1: "Six-weeks",
+               btn2: "Six-months",
+               link1: "Home",
+               link2: "Long-Term Courses",
+               link3: "Short-Term Courses",
+               link4: "Get a Quote",
+               link5: "Contact Us",
+               link6: "Home",
+               link7: "Long-Term Courses",
+               link8: "Short-Term Courses",
+               link9: "Get a Quote",
+               link10: "Contact Us",
+               title2: "Company",
+               link11: "Terms and Conditions",
+               link12: "Legal Policy",
+               link14: "Get in Touch",
+               link15: "Mall of Africa",
+               link16: "Call us on +27-8850991017",
+               link17: "Contact us on WhatsApp"
+
+
+
+
+
+           },
+           af: {
+               search: "Soek",
+               title: "Tuinonderhoud",
+               descrip: "Om basiese kennis te verskaf oor natmaak, snoei en plant in 'n huishoudelike tuin.",
+               CC1: "Kursusinhoud:",
+               CC: "Waterbeperkings en die watervereistes van inheemse en eksotiese plante",
+               pruning: "Snoei en voortplanting van plante",
+               planting: "Planttegnieke vir verskillende planttipes",
+               description1: "Verskeidenheid om van te kies",
+               description2: "Verskaf vaardighede",
+               description3: "Tot 25% afslag op kursusse",
+               username: "Luke John",
+               testimon: "Tydens hierdie kursus het ek baie geleer, soos goeie vaardighede en waardevolle lewenslesse.",
+               FAQ: "FAQ - Gereelde Vrae",
+               FAQ1: "Hoe lank duur die kursus?",
+               A1: "Die kursus duur ses maande, met buigsame skedules.",
+               FAQ2: "Wat is die bepalings en voorwaardes op die kursusse?",
+               A2: "Verwys asseblief na ons bladsy oor terme en voorwaardes vir volledige besonderhede.",
+               title1: "Verken",
+               title2: "Maatskappy",
+               btn1: "Ses weke",
+               btn2: "Ses maande",
+               link1: "Tuis",
+               link2: "Langtermynkursusse",
+               link3: "Korttermynkursusse",
+               link4: "Kry 'n Kwotasie",
+               link5: "Kontak Ons",
+               link6: "Tuis",
+               link7: "Langtermynkursusse",
+               link8: "Korttermynkursusse",
+               link9: "Kry 'n Kwotasie",
+               link10: "Kontak Ons",
+               title2: "Maatskappy",
+               link11: "Bepalings en Voorwaardes",
+               link12: "Regsake Beleid",
+               link14: "Kontak",
+               link15: "Mall of Africa",
+               link16: "Bel ons by +27-8850991017",
+               link17: "Kontak ons op WhatsApp"
+
+
+           },
+
+           zu: {
+               search: "Sesha",
+               title: "Ukulungisa Ingadi",
+               descrip: "Ukuhlinzeka ngolwazi oluyisisekelo lokunisela, ukusika, kanye nokutshala engadini yasendlini.",
+               CC1: "Okuqukethwe Kwesifundo:",
+               CC: "Ukulinganiselwa kwamanzi kanye nezidingo zokunisela izitshalo ezizalwa lapha nezivela kwamanye amazwe",
+               pruning: "Ukusikwa nokwenziwa kwezitshalo",
+               planting: "Izindlela zokutshala izinhlobo ezahlukene zezitshalo",
+               description1: "Izinhlobonhlobo ongakhetha kuzo",
+               description2: "Ihlinzeka ngamakhono",
+               description3: "Kuze kufike ku-25% isaphulelo ezinkambisweni",
+               username: "Luke John",
+               testimon: "Ngale nkambo, ngifunde lukhulu, njengamakhono amahle nezifundo ezibalulekile zempilo.",
+               FAQ: "FAQ - Imibuzo Evame Ukubuzwa",
+               FAQ1: "Isifundo sithatha isikhathi esingakanani?",
+               A1: "Isifundo sithatha izinyanga eziyisithupha, ngezinhlelo eziguquguqukayo.",
+               FAQ2: "Iyini Imigomo Nemibandela yezifundo?",
+               A2: "Sicela ubheke ikhasi lethu lemigomo nemibandela ukuze uthole imininingwane egcwele.",
+               title1: "Hlola",
+               title2: "Inkampani",
+               btn1: "Izinsuku eziyisithupha",
+               btn2: "Izinyanga eziyisithupha",
+               link1: "Ikhaya",
+               link2: "Izifundo Zesikhathi Eside",
+               link3: "Izifundo Zesikhathi Esifushane",
+               link4: "Thola Isilinganiso",
+               link5: "Xhumana Nathi",
+               link6: "Ikhaya",
+               link7: "Izifundo Zesikhathi Eside",
+               link8: "Izifundo Zesikhathi Esifushane",
+               link9: "Thola Isilinganiso",
+               link10: "Xhumana Nathi",
+               title2: "Inkampani",
+               link11: "Imigomo Nemibandela",
+               link12: "Ezomthetho Inqubomgomo",
+               link14: "Xhumana Nathi",
+               link15: "Mall of Africa",
+               link16: "Sishayele ku +27-8850991017",
+               link17: "Xhumana nathi ku-WhatsApp"
+
+           },
+           xh: {
+               search: "Khangela",
+               title: "Ukugcinwa Kwegadi",
+               descrip: "Ukunika ulwazi oluyisiseko lokunkcenkceshela, ukusika, nokutyala egadini yasekhaya.",
+               CC1: "Umxholo wesifundo:",
+               CC: "Izithintelo zamanzi kunye neemfuno zokunkcenkceshela izityalo zemveli nezizizweni",
+               pruning: "Ukusika kunye nokuphinda kukhule izityalo",
+               planting: "Iindlela zokutyala iintlobo ezahlukeneyo zezityalo",
+               description1: "Iindidi ongakhetha kuzo",
+               description2: "Inika izakhono",
+               description3: "Ukusikelwa kumanani kufikelela kwi-25% kwizifundo",
+               username: "Luke John",
+               testimon: "Kule khosi, ndifunde izinto ezininzi, ezifana nezakhono ezilungileyo kunye nezifundo zobomi ezixabisekileyo.",
+               FAQ: "FAQ - Imibuzo Ebuzwa Rhoqo",
+               FAQ1: "Ingaba ikhosi ithatha ixesha elingakanani?",
+               A1: "Ikhosi ithatha iinyanga ezintandathu, ngezicwangciso eziguquguqukayo.",
+               FAQ2: "Yeyiphi iMimiselo neMiqathango kwezi zifundo?",
+               A2: "Nceda ujonge kwiphepha lethu lemigaqo nemiqathango ngeenkcukacha ezipheleleyo.",
+               title1: "Phonononga",
+               title2: "Inkampani",
+               btn1: "Iiveki ezintandathu",
+               btn2: "Iinyanga ezintandathu",
+               link1: "Ekhaya",
+               link2: "Izifundo Zexesha Elide",
+               link3: "Izifundo Zexesha Elifutshane",
+               link4: "Fumana Ikhotheshini",
+               link5: "Qhagamshelana Nathi",
+               link6: "Ekhaya",
+               link7: "Izifundo Zexesha Elide",
+               link8: "Izifundo Zexesha Elifutshane",
+               link9: "Fumana Ikhotheshini",
+               link10: "Qhagamshelana Nathi",
+               title2: "Inkampani",
+               link11: "Imigaqo neMiqathango",
+               link12: "Ezomthetho Umgaqo-nkqubo",
+               link14: "Qhagamshelana Nathi",
+               link15: "Mall of Africa",
+               link16: "Sitsalele ku +27-8850991017",
+               link17: "Qhagamshelana nathi ku-WhatsApp"
+
+           },
+           st: {
+               search: "Batla",
+               title: "Tlhokomelo ya Serapeng",
+               descrip: "Ho fana ka tsebo ya motheo ya ho nosetsa, ho rema, le ho lema serapeng sa lehae.",
+               CC1: "dikahare tsa thupelo:",
+               CC: "Dikgohlano tsa metsi le ditlhoko tsa nosetso bakeng sa dimela tsa lehae le tsa kantle ho naha",
+               pruning: "Ho rema le ho hlahisa dimela hape",
+               planting: "Mekgwa ya ho lema bakeng sa mefuta e fapaneng ya dimela",
+               description1: "Mefuta e fapaneng ya ho khetha",
+               description2: "E fana ka bokgoni",
+               description3: "Disente tse fihlang ho 25% dithutong",
+               username: "Luke John",
+               testimon: "Ka hara kharikhulamo ena, ke ithutile haholo, ho kenyeletsa bokgoni bo molemo le dithuto tsa bophelo tse molemo.",
+               FAQ: "FAQ - Dipotso Tse Atisang Ho Botswa",
+               FAQ1: "Thupelo e nka nako e kae?",
+               A1: "Thupelo e nka likhoeli tse tšeletseng, ka linako tse feto-fetohang.",
+               FAQ2: "Melao le Lipehelo ke life lithutong?",
+               A2: "Ka kopo sheba leqephe la rona la lipehelo le maemo bakeng sa lintlha tse felletseng.",
+               title1: "Hlahloba",
+               title2: "Khamphani",
+               btn1: "Dibeke Tse Sese",
+               btn2: "Dikgwedi Tse Sese",
+               link1: "Lapeng",
+               link2: "Dikhoso Tsa Nako e Telele",
+               link3: "Dikhoso Tsa Nako e Khuts'oane",
+               link4: "Fumana Khakanyo",
+               link5: "Iteanye Le Rona",
+               link6: "Lapeng",
+               link7: "Dikhoso Tsa Nako e Telele",
+               link8: "Dikhoso Tsa Nako e Khuts'oane",
+               link9: "Fumana Khakanyo",
+               link10: "Iteanye Le Rona",
+               title2: "Khamphani",
+               link11: "Dipehelo le Maemo",
+               link12: "Molao Leano",
+               link14: "Iteanye Le Rona",
+               link15: "Mall of Africa",
+               link16: "Re letsetse ho +27-8850991017",
+               link17: "Iteanye le rona ho WhatsApp"
+           }
+       };
+       // Function to switch language content
+       function switchLanguage() {
+           const selectedLang = document.getElementById('language-select').value;
+
+           document.getElementById('search-input').placeholder = translations[selectedLang].search;
+           document.getElementById('btn1').textContent = translations[selectedLang].btn1;
+           document.getElementById('btn2').textContent = translations[selectedLang].btn2;
+           document.getElementById('link1').textContent = translations[selectedLang].link1;
+           document.getElementById('link2').textContent = translations[selectedLang].link2;
+           document.getElementById('link3').textContent = translations[selectedLang].link3;
+           document.getElementById('link4').textContent = translations[selectedLang].link4;
+           document.getElementById('link5').textContent = translations[selectedLang].link5;
+           document.getElementById('title').textContent = translations[selectedLang].title;
+           document.getElementById('descrip').textContent = translations[selectedLang].descrip;
+           document.getElementById('CC1').textContent = translations[selectedLang].CC1;
+           document.getElementById('CC').textContent = translations[selectedLang].CC;
+           document.getElementById('pruning').textContent = translations[selectedLang].pruning;
+           document.getElementById('planting').textContent = translations[selectedLang].planting;
+           document.getElementById('description1').textContent = translations[selectedLang].description1;
+           document.getElementById('description2').textContent = translations[selectedLang].description2;
+           document.getElementById('description3').textContent = translations[selectedLang].description3;
+           document.getElementById('testimon').textContent = translations[selectedLang].testimon;
+           document.getElementById('FAQ').textContent = translations[selectedLang].FAQ;
+           document.getElementById('FAQ1').textContent = translations[selectedLang].FAQ1;
+           document.getElementById('A1').textContent = translations[selectedLang].A1;
+           document.getElementById('FAQ2').textContent = translations[selectedLang].FAQ2;
+           document.getElementById('A2').textContent = translations[selectedLang].A2;
+           document.getElementById('title1').textContent = translations[selectedLang].title1;
+           document.getElementById('link6').textContent = translations[selectedLang].link6;
+           document.getElementById('link7').textContent = translations[selectedLang].link7;
+           document.getElementById('link8').textContent = translations[selectedLang].link8;
+           document.getElementById('link9').textContent = translations[selectedLang].link9;
+           document.getElementById('link10').textContent = translations[selectedLang].link10;
+           document.getElementById('title2').textContent = translations[selectedLang].title2;
+           document.getElementById('link11').textContent = translations[selectedLang].link11;
+           document.getElementById('link12').textContent = translations[selectedLang].link12;
+           document.getElementById('link15').textContent = translations[selectedLang].link15;
+           document.getElementById('link16').textContent = translations[selectedLang].link16;
+           document.getElementById('link17').textContent = translations[selectedLang].link17;
+           document.getElementById('link14').textContent = translations[selectedLang].link14;
+
+
+
+
+       } document.addEventListener('DOMContentLoaded', () => {
+           const languageSelect = document.getElementById('language-select');
+           if (languageSelect) {
+               languageSelect.addEventListener('change', switchLanguage);
+           }
+           // Initialize the language to the default language
+           switchLanguage();
+       });
+       function toggleAnswer(questionElement) {
+           const answerElement = questionElement.nextElementSibling;
+           const chevron = questionElement.querySelector('.chevron i');
+
+           // Toggle answer visibility
+           if (answerElement.style.display === 'none') {
+               answerElement.style.display = 'block';
+               chevron.style.transform = 'rotate(180deg)'; // Rotate the arrow down
+           } else {
+               answerElement.style.display = 'none';
+               chevron.style.transform = 'rotate(0deg)'; // Reset the arrow
+           }
+       }
+
+   </script>
+</head>
+
+<body>
+   <nav>
+       <div id="nav">
+           <a href="index.html"><i class="fa-brands fa-tiktok"></i></a>
+           <a href="index.html"><i class="fa-brands fa-instagram"></i></a>
+           <a href="index.html"><i class="fa-brands fa-facebook"></i></a>
+           <a href="index.html"><i class="fas fa-map"></i> Johannesburg</a>
+           <a href="index.html"><i class="fas fa-square-phone"></i> Call Us: 0237632674</a>
+       </div>
+   </nav>
+
+   <div id="tasks">
+       <img src="/_img/link href='httpsfonts.googleapis.comcssfamily=Poppins' rel='stylesheet' (1).png"
+           alt="Circle Image" class="circle" />
+           <form id="search" onsubmit="return handleSearch(event)">
+            <input type="text" id="search-input" placeholder="Search for a course" required>
+            <button type="submit"><i class="fas fa-search"></i></button>
+        </form>
+
+        <script>
+            const courses = [
+                { name: "Sewing", detailsPage: "sewing.html" },
+                { name: "Cooking", detailsPage: "cooking.html" },
+                { name: "Landscaping", detailsPage: "landscaping.html" },
+                { name: "Life Skills", detailsPage: "life-skills.html" },
+                { name: "First Aid", detailsPage: "first-aid.html" },
+                { name: "Child Minding", detailsPage: "child-minding.html" },
+                { name: "Garden Maintenance", detailsPage: "garden-maintenance.html" },
+            ];
+            
+            function handleSearch(event) {
+                event.preventDefault(); // Prevent the default form submission behavior
+            
+                const query = document.getElementById('search-input').value.trim().toLowerCase();
+                const course = courses.find(course => course.name.toLowerCase() === query);
+            
+                if (course) {
+                    // Redirect to the course details page if found
+                    window.location.href = course.detailsPage;
+                } else {
+                    // Handle case where course is not found
+                    alert("Course not found. Please try again.");
+                }
+            }
+            </script>
+       <a href="short-courses.html"><button id="btn1">Six-weeks</button></a>
+       <a href="index.html"><button id="btn2">Six-months</button></a>
+       <a href="quote-page.html"><i class="fa-solid fa-cart-shopping"></i></a>
+       <div class="language-selector">
+           <i class="fas fa-globe" id="globe-icon" onclick="toggleLanguageOptions()"></i>
+           <select id="language-select" onchange="changeLanguage()">
+               <option value="en" selected>English</option>
+               <option value="af">Afrikaans</option>
+               <option value="zu">Zulu</option>
+               <option value="xh">Xhosa</option>
+               <option value="st">Sotho</option>
+           </select>
+       </div>
+
+       <div class="menu-container">
+        <i class="fa-solid fa-bars" id="menu-icon" onclick="toggleMenu()"></i>
+        <ul id="menu-list">
+            <li><a id="link1" href="homepage.html">Home</a></li>
+            <li><a id="link2" href="index.html">Long-Term Courses</a></li>
+            <li><a id="link3" href="short-courses.html">Short-Term Courses</a></li>
+            <li><a id="link4" href="quote-page.html">Get a Quote</a></li>
+            <li><a id="link5" href="contact-us.html">Contact Us</a></li>
+        </ul>
+    </div>
+   </div>
+
+   <div>
+       <h2 class="Title" id="title">Garden Maintenance</h2>
+   </div>
+   <img class="main" src="/_img/img2.jpg" />
+   <p id="descrip">To provide basic knowledge of watering, pruning, and planting in a domestic garden.</p>
+
+   <!-- Course content and price section -->
+   <div id="content">
+       <h3 id="CC1">Course Content:</h3>
+       <ul>
+           <li id="CC">Water restrictions and the watering requirements of indigenous and exotic plants</li>
+           <li id="pruning">Pruning and propagation of plants</li>
+           <li id="planting">Planting techniques for different plant types</li>
+       </ul>
+   </div>
+
+   <!-- Extra info section -->
+   <div id="check1">
+       <div>
+           <p><i class="fa-solid fa-check"></i> <span id="description1">Variety to choose from</span> </p>
+       </div>
+       <div>
+           <p><i class="fa-solid fa-check"></i> <span id="description2">Provides skills</span> </p>
+       </div>
+       <div>
+           <p><i class="fa-solid fa-check"></i> <span id="description3">Up to 25% off on courses</span> </p>
+       </div>
+   </div>
+
+   <!-- Price -->
+   <div class="price-tag">R 750</div>
+
+   <!-- Video section -->
+   <div id="video">
+       <iframe src="https://www.youtube.com/embed/G5kU-ZVE79o?si=S7AQdulluKy-0IX8" title="YouTube video player"
+           frameborder="0"
+           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+           referrerpolicy="strict-origin-when-cross-origin" allowfullscreen width="500px" height="300px"></iframe>
+   </div>
+
+   <!-- User persona section -->
+   <h3 id="name"><i class="fas fa-user-circle icon"></i><span id="user-name"> Luke John</span></h3>
+   <div>
+       <p id="testimon">"During this course, I have learnt so much, such as good skills and valuable life lessons."</p>
+   </div>
+
+   <h3 id="FAQ">FAQ - Frequently Asked Questions</h3>
+   <ul>
+       <li>
+           <span class="question" onclick="toggleAnswer(this)">
+               <span id="FAQ1">How long does the course last?</span>
+               <span class="chevron"><i class="fa fa-chevron-down"></i></span>
+           </span>
+           <div class="answer" style="display: none;">
+               <span id="A1"> course lasts for six months, with flexible schedules.</span>
+           </div>
+       </li>
+       <li>
+           <span class="question" onclick="toggleAnswer(this)">
+               <span id="FAQ2">What are the Terms and Conditions on the courses?</span>
+               <span class="chevron"><i class="fa fa-chevron-down"></i></span>
+           </span>
+           <div class="answer" style="display: none;">
+               <span id="A2">refer to our terms and conditions page for full details.</span>
+           </div>
+       </li>
+   </ul>
+
+
+   <!-- Footer Section -->
+   <footer id="foot">
+    <div class="footer-content">
+        <div><img src="/_img/link href='httpsfonts.googleapis.comcssfamily=Poppins' rel='stylesheet' (1).png"
+                alt="Circle Image" class="circle" />
+            <p>EN</p>
+
+            <p>Empowering The Nation</p>
+
+            <p> &copy; 2024 EmpoweringTheNation. All rights reserved.</p>
+        </div>
+        <div class="footer-column">
+            <h3 id="title1">Explore</h3>
+            <div id="i1">
+                <div><a id="link6" href="homepage.html">Home</a></div>
+                <div><a id="link7" href="index.html">Long-Term Courses</a></div>
+                <div><a id="link8" href="short-courses.html">Short-Term Courses</a></div>
+                <div><a id="link9" href="quote-page.html">Get a Quote</a></div>
+                <div><a id="link10" href="contact-us.html">Contact Us</a></div>
+            </div>
+        </div>
+        <div class="footer-column2">
+            <h3 id="title2">Company</h3>
+            <div id="i2">
+                <div><a id="link11" href="terms-and-conditions.html">Terms and Conditions</a></div>
+                <div><a id="link12" href="legal-policy.html">Legal Policy</a></ldiv>
+                </div>
+            </div>
+            <div class="footer-column3">
+                <h3 id="link14">Get in Touch</h3>
+                <div id="i3">
+                    <div><a id="link15" href="#">Mall of Africa</a></div>
+                    <div><a id="link16" href="tel:+1234567890"> Call us on +27-8850991017</a></div>
+                    <div><a id="link17" href="whatsapp://send?phone=+264818623210" target="_blank">Contact us on
+                            WhatsApp</a></div>
+                    <div><a
+                            href="mailto:info@EmpoweringTheNation.co.za?subject=Enquiry from web site">info@EmpoweringTheNation.in</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+   <script src="script.js"></script>
+
+</body>
+
+</html>

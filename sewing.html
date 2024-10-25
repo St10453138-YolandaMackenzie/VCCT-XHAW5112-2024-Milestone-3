@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sewing</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+
+    <script>
+        // Define translations for each language
+        const translations = {
+            en: {
+                title1: "About Us",
+                title2: "Locations",
+                title3: "Explore",
+                title4: "Company",
+                title5: "Get in touch",
+                btn1: " Six-months",
+                btn2: " Six-weeks",
+                search: " Search",
+                link1: "Home",
+                link2: "Long-Term Courses",
+                link3: "Short-Term Courses",
+                link4: "Get a Quote",
+                link5: "Contact Us",
+                link6: "Terms and Conditions",
+                link7: "Legal Policy",
+                link9: "Call Us on +278850991017",
+                link10: "Contact us on WhatsApp",
+                link11: "Home",
+                link12: "Long-Term Courses",
+                link13: "Short-Term Courses",
+                link14: "Get a Quote",
+                link15: "Contact Us",
+                Title: "Sewing",
+                descrip: "Our sewing course is designed to provide alterations and new garment tailoring services.",
+                content1: "Types of stiches",
+                content2: "Threading a sewing machine",
+                content3: "Sewing buttons, zips, hems and seams",
+                content4: "Alterations",
+                content5: "Designing and sewing new garments",
+                description1: "Comprehensive Curriculum",
+                description2: "Expert Instructors",
+                description3: "Career readySkills",
+                testimon: "“Sewing always sounded curious to me and growing up as a man it was not the most commo activity to practice but as the years went by i decided to try, i saw the advertisement for the course and registered, It was by far one of the best decisions i made, the environment was super comfortable and educators respectable, I never felt judged while doing it, the support was wonderful and i could freely get the tecnique.”",
+                FAQ: "FAQ - Frequently Asked Questions",
+                FAQ1: "How Long are the classes ?",
+                FAQ2: "Is material provided ?",
+                FAQ3: "Will i be able to create clothing ?",
+                answer1: "The classes are typically 3 hours long, held twice a week.",
+                answer2: "Yes, all materials such as fabrics, threads, and sewing tools are provided.",
+                answer3: "Yes, by the end of the course, you will be able to create your own garments.",
+            },
+            af: {
+                title1: "Oor ons",
+                title2: "Liggings",
+                title3: "Verken",
+                title4: "Maatskappy",
+                title5: "Kom in kontak",
+                btn1: " Ses maande",
+                btn2: " Ses weke",
+                search: " Soek",
+                link1: "Tuis",
+                link2: "Langtermynkursusse",
+                link3: "Korttermynkursusse",
+                link4: "Kry 'n kwotasie",
+                link5: "Kontak ons",
+                Title: "Naaldwerk",
+                descrip: "Ons naaldwerk kursus is ontwerp om veranderinge en nuwe kledingstukke te verskaf.",
+                content1: "Tipes stiksels",
+                content2: "Draad 'n naaimasjien",
+                content3: "Naai knope, ritse, omkepe en sye",
+                content4: "Veranderinge",
+                content5: "Ontwerp en naai nuwe kledingstukke",
+                description1: "Omvattende Kurrikulum",
+                description2: "Deskundige Instrukteurs",
+                description3: "Loopbaan gereedvaardighede",
+                testimon: "“Naaldwerk het altyd vir my interessant geklink, en om groot te word as 'n man was dit nie die mees algemene aktiwiteit om te beoefen nie, maar namate die jare verbygegaan het, het ek besluit om dit te probeer. Ek het die advertensie vir die kursus gesien en geregistreer. Dit was beslis een van die beste besluite wat ek geneem het; die omgewing was baie gemaklik en die opvoeders was gerespekteerd. Ek het nooit gevoel dat ek geoordeel word terwyl ek dit gedoen het nie; die ondersteuning was wonderlik en ek kon vrylik die tegniek aanleer.”",
+                link6: "Bepalings en Voorwaardes",
+                link7: "wettig Beleid",
+                link9: "Bel ons op +278850991017",
+                link10: "Kontak ons ​​op WhatsApp",
+                link11: "Tuis",
+                link12: "Langtermynkursusse",
+                link13: "Korttermynkursusse",
+                link14: "Kry 'n kwotasie",
+                link15: "Kontak ons",
+                FAQ: "FAQ - Gereelde Vrae",
+                FAQ1: "Hoe lank duur die klasse?",
+                FAQ2: "Word materiaal voorsien?",
+                FAQ3: "Sal ek in staat wees om klere te maak?",
+                answer1: "Die klasse duur tipies 3 uur en word twee keer per week gehou.",
+                answer2: "Ja, alle materiale soos materiaal, gare en naaimiddele word voorsien.",
+                answer3: "Ja, teen die einde van die kursus sal jy in staat wees om jou eie klere te maak.",
+             },
+            zu: {
+                title1: "Mayelana Nathi",
+                title2: "Izindawo",
+                title3: "Hlola",
+                title4: "Inkampani",
+                title5: "Thintana",
+                btn1: " Izinyanga eziyisithupha",
+                btn2: " Amaviki ayisithupha",
+                search: " Sesha",
+                link1: "Ekhaya",
+                link2: "Izifundo Zesikhathi Eside",
+                link3: "Izifundo Zesikhathi Esifushane",
+                link4: "Thola I-Quote",
+                link5: "Xhumana nathi",
+                Title: "Ukuthunga",
+                descrip: "Ikhono lethu lokuthunga linjongo yokuhlinzeka ngezinguquko kanye nezinsizakalo zokwakha izingubo ezintsha.",
+                content1: "Izinhlobo zokuthunga",
+                content2: "Uthayela imishini yokuthunga",
+                content3: "Ukuthunga izinkinobho, iziphu, ama-hems kanye nezikhala",
+                content4: "Izinguquko",
+                content5: "Ukuklama nokuthunga izingubo ezintsha",
+                description1: "I-Curriculum Ephelele",
+                description2: "Othisha Abachwepheshe",
+                description3: "Amakhono Ok readiness Emsebenzini",
+                testimon: "“Ukuthunga kwaba nentshisekelo kimi, futhi njengoba ngikhula njengesilisa, bekungelona umsebenzi ovame ukwenzeka, kodwa njengoba iminyaka ihamba, nganquma ukuzama. Ngabona isikhangiso sekhono futhi ngabhalisela, kwaba yisinqumo esingcono kakhulu engikuthathe. Indawo yayikhululekile kakhulu futhi othisha bahloniphekile. Angizange ngizwe ngicindezelwe ngenkathi ngikwenza; ukwesekwa kwakukuhle kakhulu futhi ngangingakwazi ukufunda kahle ubuchwepheshe.”",
+                link6: "Imigomo Nemibandela",
+                link7: "Ezomthetho Inqubomgomo",
+                link9: "Sishayele ku +278850991017",
+                link10: "Sithinte ku-WhatsApp",
+                link11: "Ekhaya",
+                link12: "Izifundo Zesikhathi Eside",
+                link13: "Izifundo Zesikhathi Esifushane",
+                link14: "Thola I-Quote",
+                link15: "Xhumana nathi",
+                FAQ: "FAQ - Imibuzo Evame Ukubuzwa",
+                FAQ1: "Izifundo zihlala isikhathi esingakanani?",
+                FAQ2: "Ingabe impahla ihlinzekwa?",
+                FAQ3: "Ngizokwazi ukwenza izingubo?",
+                answer1: "Izifundo zivame ukuhlala amahora amathathu, zibanjwa kabili ngesonto.",
+                answer2: "Yebo, yonke impahla efana nezindwangu, izintambo, kanye namathuluzi okuthunga iyahlinzekwa.",
+                answer3: "Yebo, ekupheleni kwesifundo, uzokwazi ukwenza izingubo zakho.",
+            },
+            xh: {
+                title1: "Mayelana nathi",
+                title2: "Iindawo",
+                title3: "Jonga",
+                title4: "Inkampani",
+                title5: "Nxibelelana",
+                btn1: " Iinyanga ezintandathu",
+                btn2: " Iiveki ezintandathu",
+                search: " Khangela",
+                link1: "Ekhaya",
+                link2: "Iikhosi zexesha elide",
+                link3: "Iikhosi zeXesha elifutshane",
+                link4: "Fumana iQuote",
+                link5: "Qhagamshelana nathi",
+                link6: "Imigaqo neMiqathango",
+                link7: "Esemthethweni Umgaqo-nkqubo",
+                link9: "Sitsalele umnxeba ku +278850991017",
+                link10: "Qhagamshelana nathi kuWhatsApp",
+                link11: "Ekhaya",
+                link12: "Iikhosi zexesha elide",
+                link13: "Iikhosi zeXesha elifutshane",
+                link14: "Fumana iQuote",
+                link15: "Qhagamshelana nathi",
+                Title: "Ukuthunga",
+                descrip: "Ikhosi yethu yokuthunga ijolise ekuhlinzekeni ngeenguqu kunye nezikhumbuzo zokwakha iimpahla ezintsha.",
+                content1: "Iintlobo zeempepho",
+                content2: "Uthungela imishini yokuthunga",
+                content3: "Ukuthunga iinduku, iziphu, ama-hems kunye ne seams",
+                content4: "Iinguqu",
+                content5: "Ukwakha kunye nokuthunga iimpahla ezintsha",
+                description1: "Isikhumbuzo Esipheleleyo",
+                description2: "Othisha Abachwephesha",
+                description3: "Amakhono Okulungelelanisa Umsebenzi",
+                testimon: "“Ukuthunga bekuyinto endandithanda ukuyijonga, kwaye njengomfana, bekungelona umsebenzi ophumelele kangako, kodwa njengoko iminyaka idlula, ndecide ukuzama. Ndabona isikhumbuzo sekhosi kwaye ngabhalisela, kwaba yisinqumo esihle kakhulu endithathileyo. Indawo yayikhululekile kakhulu kwaye othisha bahloniphekile. Andizange ndifumane ndicindezelwe ngexesha lokwenza; ukuncediswa bekukuhle kakhulu kwaye ndandikwazi ukufunda ubuchule.”",
+                FAQ: "FAQ - Imibuzo Evame Ukubuzwa",
+                FAQ1: "Izifundo zihlala ixesha elingakanani?",
+                FAQ2: "Ingabe impahla ibonelelwa?",
+                FAQ3: "Ngizokwazi ukwenza iimpahla?",
+                answer1: "Iiklasi zidla ngokuhlala iiyure ezi-3, zibanjwa kabini ngeveki.",
+                answer2: "Ewe, zonke izinto ezifana namalaphu, imisonto, kunye nezixhobo zokuthunga ziya kubonelelwa.",
+                answer3: "Ewe, ekupheleni kwekhosi, uya kukwazi ukwenza izinxibo zakho.",
+
+            },
+            st: {
+                title1: "Mabapi le Rōna",
+                title2: "Libaka",
+                title3: "Hlahloba",
+                title4: "Khampani",
+                title5: "Ikopanye",
+                btn1: " Likhoeli tse tšeletseng",
+                btn2: " Libeke tse tšeletseng",
+                search: " Batla",
+                link1: "Lehae",
+                link2: "Lithuto tsa nako e telele",
+                link3: "Lithuto tsa Nako e Khutšoane",
+                link4: "Fumana Quote",
+                link5: "Iteanye le Rona",
+                link6: "Melao le Maemo",
+                link7: "Molao Leano",
+                link9: "Re letsetse ho +278850991017",
+                link10: "Ikopanye le rona ho WhatsApp",
+                link11: "Lehae",
+                link12: "Lithuto tsa nako e telele",
+                link13: "Lithuto tsa Nako e Khutšoane",
+                link14: "Fumana Quote",
+                link15: "Iteanye le Rona",
+                Title: "Ho thunga",
+                descrip: "Khoebo ea rona ea ho thunga e ikemiselitse ho fana ka liphetoho le litlhophiso tsa liphaeha tse ncha.",
+                content1: "Mefuta ea li-stitch",
+                content2: "Ho thunga ka mochini",
+                content3: "Ho thunga li-buttons, zip, hems le seams",
+                content4: "Liphetho",
+                content5: "Ho theha le ho thunga liaparo tse ncha",
+                description1: "Curriculum e felletseng",
+                description2: "Matichere a nang le boiphihlelo",
+                description3: "Bokhoni ba ho sebetsa",
+                testimon: "“Ho thunga ho ne ho utloahala e le ntho e monate ho nna, 'me ha ke le moshanyana, e ne e se ntho e tloaelehileng ho e etsa, empa ha nako e ntse e ea, ke ile ka etsa qeto ea ho leka. Ke fumane advertising ea khoebo 'me ka ngola, e ne e le e 'ngoe ea liqeto tse molemo haholo tseo ke li entseng, sebaka se ne se khotsofetse haholo ebile matichere a ne a hlompha. Ke sitwa ho ikutloa ke hatakela ha ke ntse ke etsa; tšehetso e ne e le molemo haholo 'me ke ne ke khona ho fumana mokhoa.”",
+                FAQ: "FAQ - Lipotso tse Amanang",
+                FAQ1: "Litsela li nka nako e kae?",
+                FAQ2: "Na thepa e fanoe?",
+                FAQ3: "Na ke tla khona ho etsa liaparo?",
+                answer1: "Lits'oants'o li tloaelehile ho nka dihora tse 3, li tšoareloa habeli beke.",
+                answer2: "Ee, lisebelisoa tsohle tse kang masela, mesebetsi, le lisebelisoa tsa ho sututsa li tla fanoa.",
+                answer3: "Ee, qetellong ea koana, o tla khona ho etsa liaparo tsa hao.",
+            }
+        };
+
+        // Function to switch language content
+        function switchLanguage() {
+            const selectedLang = document.getElementById('language-select').value;
+            document.getElementById('Title').textContent = translations[selectedLang].Title;
+            document.getElementById('search-input').placeholder = translations[selectedLang].search;
+            document.getElementById('btn1').textContent = translations[selectedLang].btn1;
+            document.getElementById('btn2').textContent = translations[selectedLang].btn2;
+            document.getElementById('descrip').textContent = translations[selectedLang].descrip;
+            document.getElementById('content1').textContent = translations[selectedLang].content1;
+            document.getElementById('content2').textContent = translations[selectedLang].content2;
+            document.getElementById('content3').textContent = translations[selectedLang].content3;
+            document.getElementById('content4').textContent = translations[selectedLang].content4;
+            document.getElementById('content5').textContent = translations[selectedLang].content5;
+            document.getElementById('description1').textContent = translations[selectedLang].description1;
+            document.getElementById('description2').textContent = translations[selectedLang].description2;
+            document.getElementById('description3').textContent = translations[selectedLang].description3;
+            document.getElementById('testimon').textContent = translations[selectedLang].testimon;
+            document.getElementById('FAQ').textContent = translations[selectedLang].FAQ;
+            document.getElementById('FAQ1').textContent = translations[selectedLang].FAQ1;
+            document.getElementById('FAQ2').textContent = translations[selectedLang].FAQ2;
+            document.getElementById('FAQ3').textContent = translations[selectedLang].FAQ3;
+            document.getElementById('answer1').textContent = translations[selectedLang].answer1;
+            document.getElementById('answer2').textContent = translations[selectedLang].answer2;
+            document.getElementById('answer3').textContent = translations[selectedLang].answer3;
+            document.getElementById('link1').textContent = translations[selectedLang].link1;
+            document.getElementById('link2').textContent = translations[selectedLang].link2;
+            document.getElementById('link3').textContent = translations[selectedLang].link3;
+            document.getElementById('link4').textContent = translations[selectedLang].link4;
+            document.getElementById('link5').textContent = translations[selectedLang].link5;
+            document.getElementById('title3').textContent = translations[selectedLang].title3;
+            document.getElementById('title4').textContent = translations[selectedLang].title4;
+            document.getElementById('title5').textContent = translations[selectedLang].title5;
+            document.getElementById('link11').textContent = translations[selectedLang].link11;
+            document.getElementById('link12').textContent = translations[selectedLang].link12;
+            document.getElementById('link13').textContent = translations[selectedLang].link13;
+            document.getElementById('link14').textContent = translations[selectedLang].link14;
+            document.getElementById('link15').textContent = translations[selectedLang].link15;
+            document.getElementById('link6').textContent = translations[selectedLang].link6;
+            document.getElementById('link7').textContent = translations[selectedLang].link7;
+            document.getElementById('link9').textContent = translations[selectedLang].link9;
+            document.getElementById('link10').textContent = translations[selectedLang].link10;
+            document.getElementById('title1').textContent = translations[selectedLang].title1;
+            document.getElementById('title2').textContent = translations[selectedLang].title2;
+        }
+    </script>
+</head>
+
+<body>
+    <nav>
+        <div id="nav">
+            <a href="index.html"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="index.html"><i class="fa-brands fa-instagram"></i></a>
+            <a href="index.html"><i class="fa-brands fa-facebook"></i></a>
+            <a href="index.html"><i class="fas fa-map"></i> Johannesburg</a>
+            <a href="index.html"><i class="fas fa-square-phone"></i> Call Us: 0237632674</a>
+        </div>
+    </nav>
+    </div>
+    <div id="tasks"> <img src="/_img/link href='httpsfonts.googleapis.comcssfamily=Poppins' rel='stylesheet' (1).png"
+            alt="Circle Image" class="circle" />
+            <form id="search" onsubmit="return handleSearch(event)">
+                <input type="text" id="search-input" placeholder="Search for a course" required>
+                <button type="submit"><i class="fas fa-search"></i></button>
+            </form>
+
+            <script>
+                const courses = [
+                    { name: "Sewing", detailsPage: "sewing.html" },
+                    { name: "Cooking", detailsPage: "cooking.html" },
+                    { name: "Landscaping", detailsPage: "landscaping.html" },
+                    { name: "Life Skills", detailsPage: "life-skills.html" },
+                    { name: "First Aid", detailsPage: "first-aid.html" },
+                    { name: "Child Minding", detailsPage: "child-minding.html" },
+                    { name: "Garden Maintenance", detailsPage: "garden-maintenance.html" },
+                ];
+                
+                function handleSearch(event) {
+                    event.preventDefault(); // Prevent the default form submission behavior
+                
+                    const query = document.getElementById('search-input').value.trim().toLowerCase();
+                    const course = courses.find(course => course.name.toLowerCase() === query);
+                
+                    if (course) {
+                        // Redirect to the course details page if found
+                        window.location.href = course.detailsPage;
+                    } else {
+                        // Handle case where course is not found
+                        alert("Course not found. Please try again.");
+                    }
+                }
+                </script>
+        <a href="short-courses.html"><button id="btn1" data-translate="btn1">Six-weeks</button></a>
+        <a href="index.html"><button id="btn2" data-translate="btn2">Six-months</button></a>
+        <a href="quote-page.html"><i class="fa-solid fa-cart-shopping"></i></a>
+        <div class="language-selector">
+            <i class="fas fa-globe" id="globe-icon" onclick="toggleLanguageOptions()"></i>
+            <select id="language-select" onchange="switchLanguage()">
+                <option value="en" selected>English</option>
+                <option value="af">Afrikaans</option>
+                <option value="zu">Zulu</option>
+                <option value="xh">Xhosa</option>
+                <option value="st">Sotho</option>
+            </select>
+        </div>
+
+        <div class="menu-container">
+            <i class="fa-solid fa-bars" id="menu-icon" onclick="toggleMenu()"></i>
+            <ul id="menu-list">
+                <li><a id="link1" href="homepage.html">Home</a></li>
+                <li><a id="link2" href="index.html">Long-Term Courses</a></li>
+                <li><a id="link3" href="short-courses.html">Short-Term Courses</a></li>
+                <li><a id="link4" href="quote-page.html">Get a Quote</a></li>
+                <li><a id="link5" href="contact-us.html">Contact Us</a></li>
+            </ul>
+        </div>
+    </div>
+    <div>
+        <h2 class="Title" id="Title">Sewing</h2>
+    </div>
+    <img class="main" src="/_img/rsz_hector-j-rivas-nh6nsnqyvsi-unsplash.jpg" />
+    <p id="descrip">Our sewing course is designed to provide alterations and new garment tailoring services.</p>
+    <p>
+    <div id="content">
+        <li id="content1"> Types of stiches</li>
+        <li id="content2">Threading a sewing machine</li>
+        <li id="content3">Sewing buttons, zips, hems and seams</li>
+        <li id="content4">Alterations</li>
+        <li id="content5">Designing and sewing new garments</li>
+        </p>
+    </div>
+
+    <div id="check">
+        <div>
+            <p><i class="fa-solid fa-check"></i> <span id="description1">Comprehensive Curriculum</span> </p>
+        </div>
+        <div>
+            <p><i class="fa-solid fa-check"></i> <span id="description2"></span>Expert Instructors</span> </p>
+        </div>
+        <div>
+            <p><i class="fa-solid fa-check"></i> <span id="description3"></span>Career readyskills</span> </p>
+        </div>
+    </div>
+
+    <div class="price-tag">R 1500</div>
+
+    <div id="video"><iframe width="500" height="250" src="https://www.youtube.com/embed/EZngDWBk0xE?si=kEGJWayCi3qyhhSt"
+            title="YouTube video player" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+
+    <h3 id="name"><i class="fas fa-user-circle icon"></i> John Mercury</h3>
+
+    <div>
+        <p id="testimon">“Sewing always sounded curious to me and growing up as a man it was not the most common
+            activity to practice but as the years went by i decided to try, i saw the advertisement for the course
+            and registered, It was by far one of the best decisions i made, the environment was super comfortable
+            and educators respectable, I never felt judged while doing it, the support was wonderful and i could freely
+            get the tecnique.”
+        </p>
+    </div>
+
+    <h3 id="FAQ">FAQ - Frequently Asked Questions</h3>
+
+    <ul class="faq-list">
+        <li class="faq-item">
+            <div class="question" onclick="toggleAnswer(this)">
+                <span id="FAQ1">How long are the classes?</span>
+                <span class="chevron"><i class="fa fa-chevron-down"></i></span>
+            </div>
+            <div class="answer" style="display: none;">
+                <span id="answer1"> The classes are typically 3 hours long, held twice a week.</span>
+            </div>
+        </li>
+ 
+        <li class="faq-item">
+            <div class="question" onclick="toggleAnswer(this)">
+                <span id="FAQ2">Is material provided?</span>
+                <span class="chevron"><i class="fa fa-chevron-down"></i></span>
+            </div>
+            <div class="answer" style="display: none;">
+                <span id="answer2">Yes, all materials such as fabrics, threads, and sewing tools are provided.</span>
+            </div>
+        </li>
+ 
+        <li class="faq-item">
+            <div class="question" onclick="toggleAnswer(this)">
+                <span id="FAQ3">Will I be able to create clothing?</span>
+                <span class="chevron"><i class="fa fa-chevron-down"></i></span>
+            </div>
+            <div class="answer" style="display: none;">
+                <span id="answer3">Yes, by the end of the course, you will be able to create your own garments.</span>
+            </div>
+        </li>
+    </ul>
+    
+    <!-- Footer Section -->
+    <footer id="foot">
+        <div class="footer-content">
+            <div><img src="/_img/link href='httpsfonts.googleapis.comcssfamily=Poppins' rel='stylesheet' (1).png"
+                    alt="Circle Image" class="circle" />
+                <p>EN</p>
+
+                <p>Empowering The Nation</p>
+
+                <p> &copy; 2024 EmpoweringTheNation. All rights reserved.</p>
+            </div>
+            <div class="footer-column">
+                <h3 id="title3">Explore</h3>
+                <div id="i1">
+                    <div><a id="link11" href="homepage.html">Home</a></div>
+                    <div><a id="link12" href="index.html">Long-Term Courses</a></div>
+                    <div><a id="link13" href="short-courses.html">Short-Term Courses</a></div>
+                    <div><a id="link14" href="quote-page.html">Get a Quote</a></div>
+                    <div><a id="link15" href="contact-us.html">Contact Us</a></div>
+                </div>
+            </div>
+            <div class="footer-column2">
+                <h3 id="title4">Company</h3>
+                <div id="i2">
+                    <div><a id="link6" href="terms-and-conditions.html">Terms and Conditions</a></div>
+                    <div><a id="link7" href="legal-policy.html">Legal Policy</a></ldiv>
+                    </div>
+                </div>
+                <div class="footer-column3">
+                    <h3 id="title5">Get in Touch</h3>
+                    <div id="i3">
+                        <div><a href="#">Mall of Africa</a></div>
+                        <div><a id="link9" href="tel:+1234567890"> Call us on +27-8850991017</a></div>
+                        <div><a id="link10" href="whatsapp://send?phone=+264818623210" target="_blank">Contact us on
+                                WhatsApp</a></div>
+                        <div><a
+                                href="mailto:info@EmpoweringTheNation.co.za?subject=Enquiry from web site">info@EmpoweringTheNation.in</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+
+</html>

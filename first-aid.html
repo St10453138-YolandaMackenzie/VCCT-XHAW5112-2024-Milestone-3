@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>First-Aid</title>
+   <link rel="stylesheet" href="style.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+   <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+   <style>
+       .faq-list {
+           list-style-type: none;
+           padding: 0;
+       }
+
+       .question {
+           cursor: pointer;
+           display: flex;
+           justify-content: space-between;
+           align-items: center;
+           padding: 10px;
+           border-bottom: 1px solid #ead9d9;
+           font-weight: bold;
+       }
+
+       .chevron {
+           transition: transform 0.3s;
+       }
+
+       .answer {
+           padding: 10px;
+           display: none;
+           border-bottom: 1px solid #ddd;
+       }
+   </style>
+   <script>
+       const translations = {
+           en: {
+               search: " Search",
+               btn1: "Six-weeks",
+               btn2: "Six-months",
+               Title: "First-Aid",
+               descrip: "Our first aid course is designed to provide awareness and basic life support.",
+               content1: "Wounds and bleeding",
+               content2: "Burns and fractures",
+               content3: "Emergency scene management",
+               content4: "Cardio-Pulmonary Resuscitation (CPR)",
+               content5: "Respiratory distress",
+               description1: "Comprehensive Curriculum",
+               description2: "Expert Instructors",
+               description3: "Career-ready skills",
+               name: "Maria Thompson",
+               testimon: "“As a mom of three, I’ve always considered myself educated on the basics of first-aid, but nothing compares to the experience of actually getting to study it...”",
+               FAQ: "FAQ - Frequently Asked Questions",
+               Q1: "Can I operate as a doctor after completing the course?",
+               A1: "No, this course does not qualify you to operate as a doctor.",
+               Q2: "Are there any practical classes in completion of the course?",
+               A2: "Yes, there are practical sessions to reinforce theoretical knowledge",
+               Q3: " Can I prescribe medication after the course?",
+               A3: "No, only licensed medical professionals can prescribe medication.",
+               link1: "Home",
+               link2: "Long-Term Courses",
+               link3: "Short-Term Courses",
+               link4: "Get a Quote",
+               link5: "Contact Us",
+               link6: "Explore",
+               link7: "Home",
+               link8: "Long-Term Courses",
+               link9: "Short-Term Courses",
+               link10: "Get a Quote",
+               link11: "Contact Us",
+               link12: "Company",
+               link13: "Terms and Conditions",
+               link14: "Legal Policy",
+               link15: "Get in Touch",
+               link16: "Mall of Africa",
+               link17: "Call us on +27-8850991017",
+               link18: "Contact us on WhatsApp"
+           },
+           af: {
+               search: " soek",
+               btn1: "Ses-week",
+               btn2: "Ses-maande",
+               Title: "Eerste Hulp",
+               descrip: "Ons eerstehulp kursus is ontwerp om bewustheid en basiese lewensondersteuning te bied.",
+               content1: "Wonde en bloeding",
+               content2: "Brandwonde en frakture",
+               content3: "Noodtoestand bestuur",
+               content4: "Cardio-Pulmonale Resussitasie (CPR)",
+               content5: "Respiratoriese nood",
+               description1: "Omvattende kurrikulum",
+               description2: "Deskundige Instrukturs",
+               description3: "Loopbaan gereedvaardighede",
+               name: "Maria Thompson",
+               testimon: "As ’n ma van drie het ek myself altyd as ingelig beskou oor die basiese van noodhulp, maar niks kan vergelyk word met die ervaring om dit regtig te bestudeer nie.Deur hierdie kursus kon ek ’n beter begrip van myself kry tydens stresvolle situasies en ek is in staat om kleiner komplikasies met selfvertroue te hanteer.Ek beveel dit sterk aan vir enige volwassene.",
+               FAQ: "Vrae - Gereelde Vrae",
+               Q1: "Kan ek as ’n dokter werk nadat ek die kursus voltooi het?",
+               A1: "Nee, hierdie kursus kwalifiseer jou nie om as ’n dokter te werk nie",
+               Q2: "Is daar enige praktiese klasse in die voltooiing van die kursus?",
+               A2: "Ja, daar is praktiese sessies om teoretiese kennis te versterk",
+               Q3: "Kan ek medikasie voorskryf na die kursus?",
+               A3: "Nee, slegs gelisensieerde mediese professionele persone kan medikasie voorskryf",
+               link1: "Tuis",
+               link2: "Langtermynkursusse",
+               link3: "Korttermynkursusse",
+               link4: "Kry 'n Kwotasie",
+               link5: "Kontak Ons",
+               link6: "Verken",
+               link7: "Tuis",
+               link8: "Langtermynkursusse",
+               link9: "Korttermynkursusse",
+               link10: "Kry 'n Kwotasie",
+               link11: "Kontak Ons",
+               link12: "Maatskappy",
+               link13: "Bepalings en Voorwaardes",
+               link14: "Wettig Beleid",
+               link15: "Kontak Ons",
+               link16: "Mall of Africa",
+               link17: "Bel ons by +27-8850991017",
+               link18: "Kontak ons op WhatsApp"
+
+           },
+           zu: {
+               search: "sesha",
+               btn1: "Iveki eziyi-6",
+               btn2: "Izinyanga eziyi-6",
+               Title: "Usizo Lokuphila",
+               descrip: "Ithimba lethu lokuqala luhloswe ukufundisa ukuzwakala nokusekela impilo.",
+               content1: "Izilonda nokwenzeka",
+               content2: "Izifutho nezinhlayiya",
+               content3: "Ukuphathwa kwesimo esiphuthumayo",
+               content4: "Ukuphefumula Okujwayelekile (CPR)",
+               content5: "Ukwenzeka komoya",
+               description1: "Uhlelo Olubanzi",
+               description2: "Othisha Abachwepheshe",
+               description3: "Amakhono okusebenza",
+               name: "UMaria Thompson",
+               testimon: "Njengomama wabantwana abathathu, bengihlale ngibona sengathi nginolwazi lwezinto eziyisisekelo zokusiza kwezimo eziphuthumayo, kodwa akukho okungaqhathaniswa nesipiliyoni sokufunda kahle lolu daba. Ngale khosi, ngikwazile ukuzazi kangcono ezimeni ezesabisayo futhi ngiyakwazi ukusiza ngezinkinga ezincane ngobuqotho. Ngiyincoma kakhulu le khosi kunoma yimuphi omdala.",
+               FAQ: "Imibuzo - Imibuzo Ebuzwa Ngokuvamile",
+               Q1: "Ngingasebenza njengodokotela ngemuva kokuphothula le nkambo?",
+               A1: "Cha, le nkambo ayikufaneleli ukusebenza njengodokotela",
+               Q2: "Ingabe kukhona izifundo ezisebenzayo ekuphothuleni le nkambo",
+               A2: "Yebo, kunezikhathi ezisebenzayo zokuqinisa ulwazi lwethiyori",
+               Q3: "Ngingaphakamisa imithi ngemuva kwale nkambo",
+               A3: "Cha, kuphela ochwepheshe bezokwelapha abaneziqu abakwazi ukuphakamisa imithi",
+               link1: "Ikhaya",
+               link2: "Izifundo Zesikhathi Eside",
+               link3: "Izifundo Zesikhathi Esifushane",
+               link4: "Thola Isilinganiso",
+               link5: "Xhumana Nathi",
+               link6: "Hlola",
+               link7: "Ikhaya",
+               link8: "Izifundo Zesikhathi Eside",
+               link9: "Izifundo Zesikhathi Esifushane",
+               link10: "Thola Isilinganiso",
+               link11: "Xhumana Nathi",
+               link12: "Inkampani",
+               link13: "Imigomo Nemibandela",
+               link14: "Okusemthethweni Inqubomgomo",
+               link15: "Thinta Nathi",
+               link16: "Mall of Africa",
+               link17: "Shayela ku +27-8850991017",
+               link18: "Xhumana nathi ku WhatsApp"
+           },
+           xh: {
+               search: "khangela",
+               btn1: "Iiveki eziyi-6",
+               btn2: "Iinyanga eziyi-6",
+               Title: "Ukwelashwa Okokuqala",
+               descrip: "Umphakamo wethu wefirst-aid uhlose ukuhlinzeka ngokuqwashisa.",
+               content1: "Iizilonda kunye neziphumo",
+               content2: "Iingxaki neefractures",
+               content3: "Ulawulo lwezimo eziphuthumayo",
+               content4: "Ukuphefumla Okujolise kwiNtloko (CPR)",
+               content5: "Uhlanga lokuphefumla",
+               description1: "Uhlelo Olubanzi",
+               description2: "Abafundisi Abachwepheshe",
+               description3: "Amakhono okusemthethweni",
+               name: "UMaria Thompson",
+               testimon: "Ndingumama wabantwana abathathu, ndandisoloko ndizibona ndinolwazi ngezinto ezisisiseko zoncedo lokuqala, kodwa akukho nto ithelekiswa namava okufunda ngalo. Ngekhondo leli, ndikwazile ukuzithemba ngakumbi kwiimeko ezixhalabisayo kwaye ndikwazi ukunceda kwiingxaki ezincinane ngesidima. Ndicebisa nabani na omdala ukuba ayenze le khosi.",
+               FAQ: "Imibuzo - Imibuzo Ebuzwa Ngokuvamile",
+               Q1: "Ndingasebenza njengoDokotela emva kokugqiba le mfundiso",
+               A1: "Hayi, le mfundiso ayikukwanelisile ukuba usebenze njengoDokotela",
+               Q2: "Ngaba kukhona iiklasi ezisebenzayo ekugqibeleni le mfundiso",
+               A2: "Ewe, zikhona iiseshini ezisebenzayo ukuze ziqinise ulwazi lwezithethe",
+               Q3: "Ndingabhalela imithi emva kwekhosi?",
+               A3: "Hayi, kuphela ooMphakathi bezonyango abaneziqu abakwazi ukubhalela imithi",
+               link1: "Ikhaya",
+               link2: "Izifundo Zexesha Elide",
+               link3: "Izifundo Zexesha Elifutshane",
+               link4: "Fumana Isicatshulwa",
+               link5: "Qhagamshelana Nathi",
+               link6: "Hlola",
+               link7: "Ikhaya",
+               link8: "Izifundo Zexesha Elide",
+               link9: "Izifundo Zexesha Elifutshane",
+               link10: "Fumana Isicatshulwa",
+               link11: "Qhagamshelana Nathi",
+               link12: "Inkampani",
+               link13: "Imigaqo Nemibandela",
+               link14: "Ngokomthetho Umgaqo-nkqubo",
+               link15: "Qhagamshelana Nathi",
+               link16: "Mall of Africa",
+               link17: "Sitsalele ku +27-8850991017",
+               link18: "Qhagamshelana nathi ku WhatsApp"
+           },
+           st: {
+               search: "batla",
+               btn1: "Libeke tse 6",
+               btn2: "Matsatsi a 6",
+               Title: "Tšebeletso ea Pele",
+               descrip: "Morero oa rona ke ho fa thuso e bonahalang.",
+               content1: "Meqebelo le mathata",
+               content2: "Mehato le mafura",
+               content3: "Ts'ebetso ea mathata a potlakileng",
+               content4: "Tlhahlobo ea Matla (CPR)",
+               content5: "Mefuta ea ho hema",
+               description1: "Thutong e Pharaletseng",
+               description2: "Mosebeletsi oa litsebi",
+               description3: "Mokhoa oa mesebetsi",
+               name: "UMaria Thompson",
+               testimon: "Joaloka mme wa bana ba bararo, kamehla ke ne ke ipona ke na le tsebo ya motheo ya thuso ya pele, empa ha ho letho le ka bapisoang le boiphihlelo ba ho ithuta yona hantle.Ka thupelo ena, ke ile ka ba le kutlwisiso e kgolo ya ka ka hara maemo a tshohanyetso, mme ke khona ho thusa dinyakallo tse nyenyane ka boikgantsho.Ke kgothaletsa motho e mong le e mong e moholo ho etsa thupelo ena.",
+               FAQ: "Lipotso - Lipotso Tse Khethiloeng",
+               Q1: "Na nka sebetsa joalo ka ngaka ka mor’a ho qeta koetliso?",
+               A1: "Che, koetliso ena ha e u fa tumello ea ho sebetsa joalo ka ngaka",
+               Q2: "Na ho na le likolo tse sebelisoang ho phethahatsa koetliso?",
+               A2: "Ee, ho na le mekhahlelo e sebelisoang ho tiisa tsebo ea ka theori",
+               Q3: "Na nka ngola meriana ka mor’a koetliso?",
+               A3: "Che, ke litsebi tsa meriana tse nang le ngwaga e le ’ngoe feela li ka ngolang meriana",
+               link1: "Lehae",
+               link2: "Lithuto tsa Nako e Telele",
+               link3: "Lithuto tsa Nako e Khuts'oane",
+               link4: "Fumana Khopolo",
+               link5: "Iteanye le Rona",
+               link6: "Hlahisa",
+               link7: "Lehae",
+               link8: "Lithuto tsa Nako e Telele",
+               link9: "Lithuto tsa Nako e Khuts'oane",
+               link10: "Fumana Khopolo",
+               link11: "Iteanye le Rona",
+               link12: "Khamphani",
+               link13: "Maemo le Maemo",
+               link14: "Molao Leano",
+               link15: "Iteanye le Rona",
+               link16: "Mall of Africa",
+               link17: "Re Letsetse ho +27-8850991017",
+               link18: "Iteanye le rona ka WhatsApp"
+           }
+       };
+       function switchLanguage() {
+           const selectedLang = document.getElementById('language-select').value;
+
+
+           document.getElementById('search-input').placeholder = translations[selectedLang].search;
+           document.getElementById('btn1').textContent = translations[selectedLang].btn1;
+           document.getElementById('btn2').textContent = translations[selectedLang].btn2;
+           document.getElementById('link1').textContent = translations[selectedLang].link1;
+           document.getElementById('link2').textContent = translations[selectedLang].link2;
+           document.getElementById('link3').textContent = translations[selectedLang].link3;
+           document.getElementById('link4').textContent = translations[selectedLang].link4;
+           document.getElementById('link5').textContent = translations[selectedLang].link5;
+           document.getElementById('Title').textContent = translations[selectedLang].Title;
+           document.getElementById('descrip').textContent = translations[selectedLang].descrip;
+           document.getElementById('content1').textContent = translations[selectedLang].content1;
+           document.getElementById('content2').textContent = translations[selectedLang].content2;
+           document.getElementById('content3').textContent = translations[selectedLang].content3;
+           document.getElementById('content4').textContent = translations[selectedLang].content4;
+           document.getElementById('content5').textContent = translations[selectedLang].content5;
+           document.getElementById('description1').textContent = translations[selectedLang].description1;
+           document.getElementById('description2').textContent = translations[selectedLang].description2;
+           document.getElementById('description3').textContent = translations[selectedLang].description3;
+           document.getElementById('description3').textContent = translations[selectedLang].description3;
+           document.getElementById('name').textContent = translations[selectedLang].name;
+           document.getElementById('testimon').textContent = translations[selectedLang].testimon;
+           document.getElementById('FAQ').textContent = translations[selectedLang].FAQ;
+           document.getElementById('Q1').textContent = translations[selectedLang].Q1;
+           document.getElementById('A1').textContent = translations[selectedLang].A1;
+           document.getElementById('Q1').textContent = translations[selectedLang].Q1;
+           document.getElementById('Q2').textContent = translations[selectedLang].Q2;
+           document.getElementById('A2').textContent = translations[selectedLang].A2;
+           document.getElementById('Q3').textContent = translations[selectedLang].Q3;
+           document.getElementById('A3').textContent = translations[selectedLang].A3;
+           document.getElementById('link6').textContent = translations[selectedLang].link6;
+           document.getElementById('link7').textContent = translations[selectedLang].link7;
+           document.getElementById('link8').textContent = translations[selectedLang].link8;
+           document.getElementById('link9').textContent = translations[selectedLang].link9;
+           document.getElementById('link10').textContent = translations[selectedLang].link10;
+           document.getElementById('link11').textContent = translations[selectedLang].link11;
+           document.getElementById('link12').textContent = translations[selectedLang].link12;
+           document.getElementById('link13').textContent = translations[selectedLang].link13;
+           document.getElementById('link14').textContent = translations[selectedLang].link14;
+           document.getElementById('link15').textContent = translations[selectedLang].link15;
+           document.getElementById('link16').textContent = translations[selectedLang].link16;
+           document.getElementById('link17').textContent = translations[selectedLang].link17;
+           document.getElementById('link18').textContent = translations[selectedLang].link18;
+       }
+
+       document.addEventListener('DOMContentLoaded', () => {
+           const languageSelect = document.getElementById('language-select');
+           if (languageSelect) {
+               languageSelect.addEventListener('change', switchLanguage);
+           }
+           // Initialize the language to the default language
+           switchLanguage();
+       });
+       function toggleAnswer(questionElement) {
+           const answerElement = questionElement.nextElementSibling;
+           const chevron = questionElement.querySelector('.chevron i');
+
+           // Toggle answer visibility
+           if (answerElement.style.display === 'none') {
+               answerElement.style.display = 'block';
+               chevron.style.transform = 'rotate(180deg)'; // Rotate the arrow
+           } else {
+               answerElement.style.display = 'none';
+               chevron.style.transform = 'rotate(0deg)'; // Reset the arrow
+           }
+       }
+
+
+
+   </script>
+</head>
+</head>
+
+<body>
+   <nav>
+       <div id="nav">
+           <a href="index.html"><i class="fa-brands fa-tiktok"></i></a>
+           <a href="index.html"><i class="fa-brands fa-instagram"></i></a>
+           <a href="index.html"><i class="fa-brands fa-facebook"></i></a>
+           <a href="index.html"><i class="fas fa-map"></i> Johannesburg</a>
+           <a href="index.html"><i class="fas fa-square-phone"></i> Call Us: 0237632674</a>
+       </div>
+   </nav>
+   </div>
+   <div id="tasks"> <img src="/_img/link href='httpsfonts.googleapis.comcssfamily=Poppins' rel='stylesheet' (1).png"
+           alt="Circle Image" class="circle" />
+           <form id="search" onsubmit="return handleSearch(event)">
+            <input type="text" id="search-input" placeholder="Search for a course" required>
+            <button type="submit"><i class="fas fa-search"></i></button>
+        </form>
+
+        <script>
+            const courses = [
+                { name: "Sewing", detailsPage: "sewing.html" },
+                { name: "Cooking", detailsPage: "cooking.html" },
+                { name: "Landscaping", detailsPage: "landscaping.html" },
+                { name: "Life Skills", detailsPage: "life-skills.html" },
+                { name: "First Aid", detailsPage: "first-aid.html" },
+                { name: "Child Minding", detailsPage: "child-minding.html" },
+                { name: "Garden Maintenance", detailsPage: "garden-maintenance.html" },
+            ];
+            
+            function handleSearch(event) {
+                event.preventDefault(); // Prevent the default form submission behavior
+            
+                const query = document.getElementById('search-input').value.trim().toLowerCase();
+                const course = courses.find(course => course.name.toLowerCase() === query);
+            
+                if (course) {
+                    // Redirect to the course details page if found
+                    window.location.href = course.detailsPage;
+                } else {
+                    // Handle case where course is not found
+                    alert("Course not found. Please try again.");
+                }
+            }
+            </script>
+       <a href="short-courses.html"><button id="btn1">Six-weeks</button></a>
+       <a href="index.html"><button id="btn2">Six-months</button></a>
+       <a href="quote-page.html"><i class="fa-solid fa-cart-shopping"></i></a>
+       <div class="language-selector">
+           <i class="fas fa-globe" id="globe-icon" onclick="toggleLanguageOptions()"></i>
+           <select id="language-select">
+               <option value="en" selected>English</option>
+               <option value="af">Afrikaans</option>
+               <option value="zu">Zulu</option>
+               <option value="xh">Xhosa</option>
+               <option value="st">Sotho</option>
+           </select>
+       </div>
+
+       <div class="menu-container">
+        <i class="fa-solid fa-bars" id="menu-icon" onclick="toggleMenu()"></i>
+        <ul id="menu-list">
+            <li><a id="link1" href="homepage.html">Home</a></li>
+            <li><a id="link2" href="index.html">Long-Term Courses</a></li>
+            <li><a id="link3" href="short-courses.html">Short-Term Courses</a></li>
+            <li><a id="link4" href="quote-page.html">Get a Quote</a></li>
+            <li><a id="link5" href="contact-us.html">Contact Us</a></li>
+        </ul>
+    </div>
+   </div>
+   <div>
+       <h2 class="Title" id="Title">First-Aid</h2>
+   </div>
+   <img class="main" src="/_img/rsz_kristine-wook-zyxnwi3jcto-unsplash.jpg" />
+   <p id="descrip">Our first aid course is designed to provide awareness and basic life support.</p>
+   <p>
+   <div id="content">
+       <li id="content1"> Wounds and bleeding</li>
+       <li id="content2"> Burns and fractures</li>
+       <li id="content3"> Emergency scene management</li>
+       <li id="content4"> Cardio-Pulmonary Resuscitation (CPR)</li>
+       <li id="content5"> Respiratory distress</li>
+       </p>
+   </div>
+
+   <div id="check">
+       <div>
+           <p><i class="fa-solid fa-check"></i> <span id="description1">Comprehensive Curriculum</span> </p>
+       </div>
+       <div>
+           <p><i class="fa-solid fa-check"></i> <span id="description2">Expert Instructors</span> </p>
+       </div>
+       <div>
+           <p><i class="fa-solid fa-check"></i> <span id="description3">Career readyskills</span> </p>
+       </div>
+   </div>
+   <div class="price-tag">R 1500</div>
+
+   <div id="video"><iframe width="500" height="250" src="https://www.youtube.com/embed/gn6xt1ca8A0?si=IjDWtwxIPI_9xC2b"
+           title="YouTube video player" frameborder="10"
+           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+           referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+           
+           <div><h3 id="name"><i class="fas fa-user-circle icon"></i> Mariah Tomphson</h3></div>
+           
+    <div>
+       <p id="testimon">“As a mom of three i’ve always considered myself educated on the basics of first-aid but
+           nothing compares to the experience of actually getting to study it, through this course i could gain more 
+           sense of myself during alarming situations and am able to assist minor complications with majesty, i highly 
+           recommend any adult to do it.”
+       </p>
+   </div>
+
+   <h3 id="FAQ">FAQ - Frequently Asked Questions</h3>
+
+   <ul class="faq-list">
+       <li class="faq-item">
+           <div class="question" onclick="toggleAnswer(this)">
+               <span id="Q1">Can I operate as a doctor after completing the course?</span>
+               <span class="chevron"><i class="fa fa-chevron-down"></i></span>
+           </div>
+           <div class="answer" style="display: none;">
+               <span id="A1"></span>No, this course does not qualify you to operate as a doctor.</span>
+           </div>
+       </li>
+
+       <li class="faq-item">
+           <div class="question" onclick="toggleAnswer(this)">
+               <span id="Q2">Are there any practical classes in completion of the course?</span>
+               <span class="chevron"><i class="fa fa-chevron-down"></i></span>
+           </div>
+           <div class="answer" style="display: none;">
+               <span id="A2">Yes, there are practical sessions to reinforce theoretical knowledge.</span>
+           </div>
+       </li>
+
+       <li class="faq-item">
+           <div class="question" onclick="toggleAnswer(this)">
+               <span id="Q3">Can I prescribe medication after the course?</span>
+               <span class="chevron"><i class="fa fa-chevron-down"></i></span>
+           </div>
+           <div class="answer" style="display: none;">
+               <span id="A3">No, only licensed medical professionals can prescribe medication.</span>
+           </div>
+       </li>
+   </ul>
+
+   <!-- Footer Section -->
+   <footer id="foot">
+    <div class="footer-content">
+        <div><img src="/_img/link href='httpsfonts.googleapis.comcssfamily=Poppins' rel='stylesheet' (1).png"
+                alt="Circle Image" class="circle" />
+            <p>EN</p>
+
+            <p>Empowering The Nation</p>
+
+            <p> &copy; 2024 EmpoweringTheNation. All rights reserved.</p>
+        </div>
+        <div class="footer-column">
+            <h3 id="link6">Explore</h3>
+            <div id="i1">
+                <div><a id="link7" href="homepage.html">Home</a></div>
+                <div><a id="link8" href="index.html">Long-Term Courses</a></div>
+                <div><a id="link9" href="short-courses.html">Short-Term Courses</a></div>
+                <div><a id="link10" href="quote-page.html">Get a Quote</a></div>
+                <div><a id="link11" href="contact-us.html">Contact Us</a></div>
+            </div>
+        </div>
+        <div class="footer-column2">
+            <h3 id="link12">Company</h3>
+            <div id="i2">
+                <div><a id="link13" href="terms-and-conditions.html">Terms and Conditions</a></div>
+                <div><a id="link14" href="legal-policy.html">Legal Policy</a></ldiv>
+                </div>
+            </div>
+            <div class="footer-column3">
+                <h3 id="link15">Get in Touch</h3>
+                <div id="i3">
+                    <div><a id="link16" href="#">Mall of Africa</a></div>
+                    <div><a id="link17" href="tel:+1234567890"> Call us on +27-8850991017</a></div>
+                    <div><a id="link18" href="whatsapp://send?phone=+264818623210" target="_blank">Contact us on WhatsApp</a></div>
+                    <div><a href="mailto:info@EmpoweringTheNation.co.za?subject=Enquiry from web site">info@EmpoweringTheNation.in</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+   <script src="script.js"></script>
+</body>
+
+</html>

@@ -36,6 +36,7 @@ const navigationOptions: { name: keyof RootStackParamList; label: string }[] = [
   { name: 'ContactUs', label: 'Contact Us' },
 ];
 
+  
 export default function QuoteScreen({ navigation }: QuoteScreenProps) {
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
@@ -46,6 +47,12 @@ export default function QuoteScreen({ navigation }: QuoteScreenProps) {
   const [modalVisible, setModalVisible] = useState(false);
   const [showFees, setShowFees] = useState(false); 
   const [quoteVisible, setQuoteVisible] = useState(false); 
+  
+  if (!fontsLoaded) {
+    // If fonts are not loaded, show a loading message
+    return <View><Text>Loading...</Text></View>;
+  }
+
 
   const handleRegistration = () => {
     if (!fullName || !email || selectedCourses.length === 0 || !phoneNumber) {
@@ -178,10 +185,6 @@ export default function QuoteScreen({ navigation }: QuoteScreenProps) {
           onChangeText={setPhoneNumber}
         />
 
-        <TouchableOpacity style={styles.button} onPress={handleRegistration}>
-          <Text style={styles.buttonText}>Complete Registration</Text>
-        </TouchableOpacity>
-
         <View style={styles.checkboxContainer}>
           {courses.map((course) => (
             <TouchableOpacity
@@ -201,16 +204,12 @@ export default function QuoteScreen({ navigation }: QuoteScreenProps) {
             <Text style={styles.buttonText}>Get Quote</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity 
-            style={styles.orangeButton} 
-            onPress={() => { 
-              setShowFees(true); 
-            }}
-          >
+          <TouchableOpacity style={styles.orangeButton} onPress={() => {setShowFees(true);}}>
             <Text style={styles.buttonText}>Calculate Fees</Text>
           </TouchableOpacity>
         </View>
 
+    
         {showFees && ( 
           <View style={styles.feeDisplay}>
             <Text style={styles.feeText}>Subtotal: R{subtotal.toFixed(2)}</Text>
@@ -219,6 +218,12 @@ export default function QuoteScreen({ navigation }: QuoteScreenProps) {
             <Text style={styles.feeText}>Total: R{total.toFixed(2)}</Text>
           </View>
         )}
+        
+        <View style={styles.bottomButtonContainer}>
+  <TouchableOpacity style={styles.button} onPress={handleRegistration}>
+    <Text style={styles.buttonText}>Complete Registration</Text>
+  </TouchableOpacity>
+</View>
 
         {/* Quote Modal */}
         <Modal
@@ -278,7 +283,6 @@ export default function QuoteScreen({ navigation }: QuoteScreenProps) {
   );
 }
 
-
 const styles = StyleSheet.create({
   scrollContainer: {
     flexGrow: 1,
@@ -303,14 +307,17 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     marginBottom: 20,
   },
-  button: {
-    backgroundColor: 'orange',
-    paddingVertical: 10,
-    marginLeft: 200,
-    borderRadius: 20,
-    width: 160,
+  bottomButtonContainer: {
+    marginTop: 20,
     alignItems: 'center',
-    marginTop: -10,
+  },
+  
+  button: {
+    backgroundColor: '#FFA500',
+    paddingVertical: 12,
+    paddingHorizontal: 25,
+    borderRadius: 5,
+    marginTop: 'auto',
   },
   buttonText: {
     color: 'white',
@@ -436,3 +443,4 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
 });
+

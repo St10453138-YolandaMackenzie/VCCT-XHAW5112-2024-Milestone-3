@@ -94,7 +94,7 @@ function updateSelection() {
 
            // Create list items for course and price
            var courseItem = document.createElement('p');
-           courseItem.textContent = courseName; // Course name
+           courseItem.textContent = courseName; 
            courseList.appendChild(courseItem);
 
            var priceItem = document.createElement('p');
@@ -195,26 +195,24 @@ function updateProgressBar(step) {
     }
 }
 
-// Example: calling the function when a step is completed
-// You can call this when users fill out the form or select an option
+
 document.getElementById('btn3').addEventListener('click', function() {
-    // Assuming user finishes step 1
+   
     updateProgressBar(1);
 
-    // Then move to step 2 and so on
+ 
     updateProgressBar(2);
     updateProgressBar(3);
 });
 
-// Example: Triggering progress bar update on checkbox selection
+
 document.querySelectorAll('input[type="checkbox"]').forEach(function(checkbox) {
     checkbox.addEventListener('change', function() {
-        // Update progress when a course is selected
+       
         updateProgressBar(1); // For the "Selection" step
     });
 });
 
-// Example: Trigger progress when personal details are filled in
 document.getElementById('Name').addEventListener('input', function() {
     updateProgressBar(2); // For the "Personal Details" step
 });
@@ -222,28 +220,6 @@ document.getElementById('Name').addEventListener('input', function() {
 // Example: Trigger when the user checks the data
 document.getElementById('btn3').addEventListener('button', function() {
     updateProgressBar(3); // For the "Check Data" step
-});
-
-document.getElementById("btn3").addEventListener("click", function() {
-    // Get the input fields
-    const name = document.getElementById("Name").value;
-    const surname = document.getElementById("Surname").value;
-    const email = document.getElementById("Email").value;
-    const phone = document.getElementById("Phone").value;
-
-// Check if the fields are empty
-if (name === "" || email === "" || surname === "" || phone === "") {
-    Toastify({
-      text: "Please fill all the required information!",
-      duration: 3000, // duration in milliseconds
-      gravity: "top", // 'top' or 'bottom'
-      position: "right", // 'left', 'center', or 'right'
-      backgroundColor: "#4CAF50"
-    }).showToast();
-  } else {
-    // Handle the case where form is valid (e.g., form submission)
-    alert("Form submitted successfully!");
-  }
 });
 
 function toggleAnswer(questionElement) {
@@ -272,26 +248,10 @@ function toggleAnswer(questionElement) {
 
 }
 
-// Registration process
-document.getElementById('register-btn').addEventListener('click', function() {
-    const name = document.getElementById('Name').value.trim();
-    const surname = document.getElementById('Surname').value.trim();
-    const email = document.getElementById('Email').value.trim();
-    const phone = document.getElementById('Phone').value.trim();
 
-    // Check if any field is empty
-    if (!name || !surname || !email || !phone) {
-        registerMessage.textContent = "Please fill out all fields.";
-        registerMessage.style.color = "red";
-        registerMessage.style.display = "block";
-        return; // Exit the function
-    }
 
-    // Show success message
-    registerMessage.textContent = "Successfully registered";
-    registerMessage.style.color = "green";
-    registerMessage.style.display = "block";
-});
+
+
 
 
 

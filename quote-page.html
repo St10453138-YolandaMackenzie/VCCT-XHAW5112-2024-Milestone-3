@@ -320,11 +320,11 @@
         <main>
             <nav>
                 <div id="nav">
-                    <a href="index.html"><i class="fa-brands fa-tiktok"></i></a>
-                    <a href="index.html"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="index.html"><i class="fa-brands fa-facebook"></i></a>
-                    <a href="index.html"><i class="fas fa-map"></i> Johannesburg</a>
-                    <a href="index.html"><i class="fas fa-square-phone"></i> Call Us: 0237632674</a>
+                    <a href="https://www.tiktok.com/@empowering.the.na?_t=8r5kBCvtzWt&_r=1"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="https://www.instagram.com/empowering_the__nation/profilecard/?igsh=aGx2am02aGI0Y2Vk"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.facebook.com/share/zquyjyGDeLJD2NVo/"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="https://maps.app.goo.gl/1aoQ5RncK3WVyS8aA"><i class="fas fa-map"></i> Johannesburg</a>
+                    <a href="tel:+27237632674"><i class="fas fa-square-phone"></i> Call Us: 0237632674</a>
                 </div>
             </nav>
             </div>
@@ -464,33 +464,75 @@
     <p>_________________________________________________________________________________________</p>
     <h2 id="title2">Personal Details</h2>
 
-    <form>
-        <div> <label for="Name"></label>
-            <input type="text" id="Name" name="Name" placeholder="Name">
+    <form id="registrationForm">
+        <div>
+            <input type="text" id="Name" name="Name" placeholder="Name" required>
         </div>
-    </form>
-
-    <form>
-        <div> <label for=" Surname"></label>
-            <input type="text" id="Surname" name="Surname" placeholder="Surname">
+        
+        <div>
+            <input type="text" id="Surname" name="Surname" placeholder="Surname" required>
         </div>
-    </form>
-
-    <form>
-        <div><label for=" Email"></label>
-            <input type="text" id="Email" name="Email Adress" placeholder="Email Address">
+    
+        <div>
+            <input type="email" id="Email" name="Email" placeholder="Email Address" required>
         </div>
-    </form>
-
-    <form>
-        <div><label for=" Phone Number"></label>
-            <input type="number" id="Phone" name="Phone Number" placeholder="Phone Number">
+    
+        <div>
+            <input type="tel" id="Phone" name="Phone" placeholder="Phone Number" required>
         </div>
+    
+        <button type="submit" id="btn4">Register</button>
     </form>
-</form>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('registrationForm');
+            const registerButton = document.getElementById('btn4'); 
+    
+            if (form && registerButton) {
+                registerButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+    
+                    // Retrieve user data
+                    const name = document.getElementById('Name').value;
+                    const surname = document.getElementById('Surname').value;
+                    const email = document.getElementById('Email').value;
+                    const phone = document.getElementById('Phone').value;
+    
+                    // Retrieve the selected courses and their prices
+                    const courses = [];
+                    const courseOptions = document.querySelectorAll('input[name="options"]:checked');
+                    
+                    courseOptions.forEach(option => {
+                        const courseLabel = document.querySelector(`label[for="${option.id}"] span`).innerText;
+                        const coursePrice = document.querySelector(`label[for="${option.id}"] p`).innerText;
+                        courses.push({ course: courseLabel, price: coursePrice });
+                    });
+    
+                    // Retrieve stored user details from localStorage and parse it
+                    let userDetails = JSON.parse(localStorage.getItem('userDetails')) || [];
+    
+                    // Create a new user data object including the selected courses
+                    const formData = { name, surname, email, phone, courses };
+    
+                    // Add the new user data to the array
+                    userDetails.push(formData);
+    
+                    // Save the updated array back to localStorage
+                    localStorage.setItem('userDetails', JSON.stringify(userDetails));
+    
+                    alert('Successfully Registered!');
+                });
+            } else {
+                console.log('Form or button not found');
+            }
+        });
+    </script>
+    
+    
+    
+    
 <button id="btn3">Generate Total</button>
-<button id="btn4">Register</button>
-<p id="register-message" style="display: none;"></p>
 </div>
 <p>_____________________________________________________________________________________________________________________________________________
 </p>
@@ -534,7 +576,7 @@
             <div class="footer-column3">
                 <h3 id="title5">Get in Touch</h3>
                 <div id="i3">
-                    <div><a href="#">Mall of Africa</a></div>
+                    <div><a href="https://maps.app.goo.gl/1aoQ5RncK3WVyS8aA">Mall of Africa</a></div>
                     <div><a id="link9" href="tel:+1234567890"> Call us on +27-8850991017</a></div>
                     <div><a id="link10" href="whatsapp://send?phone=+264818623210" target="_blank">Contact us on
                             WhatsApp</a></div>

@@ -1,25 +1,39 @@
 # VCCT-XHAW5112-2024-Milestone-3
 
 Website {Visual Studio}
-1  Youtube link of Running App https://youtu.be/2S32CleGFCE4
+1  Youtube link of Running App https://youtu.be/qhMohgXq65g
+
+
 Purpose:
 The purpose of the Empowering the Nation project is to make it easy for people to access services and information on the courses. By using our website and mobile application, we as team members want to share the courses empowering the nation provides to South African citizens, specifically those in Johannesburg. The three locations we picked were in common malls in Johannesburg, Sandton city, Rosebank mall, and Mall of Africa.
 
 Below are steps on how to navigate the Website:
+
 •	Start on the homepage, where you are greeted by the main content.
+
 •	Click on the “Six Weeks” button or the “Six Months” button, depending on your preference.
+
 •	You will be directed to the page that corresponds to your selection.
+
 •	Browse the available courses for either the short-term or long-term option.
+
 •	When you find a course, you are interested in, click on it for a more detailed description.
+
 •	Once you have selected your course and are satisfied with your choice, scroll to the top of the screen.
+
 •	In the header, click the “Get a Quote” button to proceed.
+
 •	On the checkout page, fill in your personal details.
+
 •	On the right side of the page, select the course you want to purchase.
+
 •	Click “Generate Total” to see the amount due.
+
 •	Discounts are applied based on the number of courses selected:
 •	If 2 courses are chosen, a 5% discount will be applied.
 •	If 3 courses are chosen, a 10% discount will be applied
 •	If more than 3 courses are chosen, a 15% discount will be applied.
+
 •	If you need help with the courses or need more information:
 •	Go to the header section and click the menu icon located on the right, next to the globe icon.
 •	Select the last option, “Contact Us.”

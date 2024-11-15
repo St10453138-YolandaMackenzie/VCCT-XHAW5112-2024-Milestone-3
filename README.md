@@ -1,5 +1,5 @@
 App ReadMe
-
+Navigation video on YouTube: https://youtu.be/PDz9h9nnnV8 
 Purpose:
 The purpose of the Empowering the Nation project is to make it easy for people to access services and information on the courses. By using our website and mobile application, we as team members want to share the courses empowering the nation provides to South African citizens, specifically those in Johannesburg. The three locations we picked were in common malls in Johannesburg, Sandton city, Rosebank mall, and Mall of Africa.
 

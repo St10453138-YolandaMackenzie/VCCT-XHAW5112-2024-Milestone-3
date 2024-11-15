@@ -7,6 +7,8 @@ import { useFonts, Poppins_400Regular } from '@expo-google-fonts/poppins';
 import { ScrollView } from 'react-native';
 import * as Print from 'expo-print'; // to generate quote PDF
 import { shareAsync } from 'expo-sharing'; // to download the generated PDF
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 type QuoteScreenProps = NativeStackScreenProps<RootStackParamList, 'Quote'>;
 
@@ -36,7 +38,6 @@ const navigationOptions: { name: keyof RootStackParamList; label: string }[] = [
   { name: 'ContactUs', label: 'Contact Us' },
 ];
 
-  
 export default function QuoteScreen({ navigation }: QuoteScreenProps) {
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
@@ -47,20 +48,31 @@ export default function QuoteScreen({ navigation }: QuoteScreenProps) {
   const [modalVisible, setModalVisible] = useState(false);
   const [showFees, setShowFees] = useState(false); 
   const [quoteVisible, setQuoteVisible] = useState(false); 
-  
-  if (!fontsLoaded) {
-    // If fonts are not loaded, show a loading message
-    return <View><Text>Loading...</Text></View>;
-  }
 
-
-  const handleRegistration = () => {
+  const handleRegistration = async () => {
     if (!fullName || !email || selectedCourses.length === 0 || !phoneNumber) {
       Alert.alert('Error', 'Please fill in all fields');
       return;
     }
-
-    Alert.alert('Success', 'Registration completed successfully');
+  
+    try {
+      // Construct the user data object
+      const userData = {
+        fullName,
+        email,
+        phoneNumber,
+        selectedCourses,
+        registrationDate: new Date().toISOString(),
+      };
+  
+      // Save user data in AsyncStorage
+      await AsyncStorage.setItem('userRegistrationData', JSON.stringify(userData));
+  
+      Alert.alert('Success', 'Registration completed and information stored successfully');
+    } catch (error) {
+      Alert.alert('Error', 'Failed to store user information. Please try again.');
+      console.error('Error storing user information:', error);
+    }
   };
 
   const handleCourseSelect = (course: string) => {
@@ -443,4 +455,3 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
 });
-
